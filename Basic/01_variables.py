@@ -42,5 +42,22 @@ Respuesta: Not really :(
 Podemos anotar el tipo para indicar una preferencia de tipado, pero no existe el tipado estático fuerte.
 Las anotaciones de tipo, combinadas con herramientas como mypy o bibliotecas como pydantic, permiten acercarse 
 al tipado fuerte
+
+Sobre las constantes: 
+En python no se pueden crear constantes :(.
+Sin embargo, se pueden implementar constantes utilizando convenciones y buenas prácticas.
+
+Ejemplos:
+En el módulo const.py:
+GRAVITY = 9.8
+SPEED_OF_LIGHT = 299792458
+MAX_USERS = 100
+
+En el archivo principal:
+import const
+
+print(const.GRAVITY)  # 9.8
+print(const.SPEED_OF_LIGHT)  # 299792458
+print(const.MAX_USERS)  # 100
 """
 

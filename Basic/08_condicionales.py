@@ -2,15 +2,15 @@
 
 # if
 
-my_condition = False
+my_condition = True
 
 if my_condition:  # Es lo mismo que if my_condition == True:
-    print("Se ejecuta la condición del if")
+    print("Se ejecuta la condición del if") #Si no se tabula esta línea, da error en tiempo de ejecución
 
 my_condition = 5 * 5
 
 if my_condition == 10:
-    print("Se ejecuta la condición del segundo if")
+    print("Se ejecuta la condición del segundo if") 
 
 # if, elif, else
 

@@ -1,5 +1,3 @@
-# Clase en vídeo: https://youtu.be/Kp4Mvapo5kc?t=29327
-
 ### Classes ###
 
 # Definición

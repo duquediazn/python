@@ -43,7 +43,7 @@ def print_name(name, surname):
     print(f"{name} {surname}")
 
 
-print_name(surname="Moure", name="Brais")
+print_name(surname="Moure", name="Brais") #Podemos cambiar el orden si lo indicamos, como en php
 
 # Función con parámetros de entrada/argumentos por defecto
 
@@ -57,11 +57,30 @@ print_name_with_default("Brais", "Moure", "MoureDev")
 
 # Función con parámetros de entrada/argumentos arbitrarios
 
-def print_upper_texts(*texts):
-    print(type(texts))
-    for text in texts:
-        print(text.upper())
+'''
+Argumentos Variables: 
+    El asterisco (*) permite que la función acepte un número variable de argumentos. 
+    Esto significa que puedes llamar a la función con cero, uno o más argumentos, y todos ellos se agruparán en una tupla.
 
+Cómo funciona:
+    Los argumentos proporcionados después del asterisco (*) se empaquetan en una tupla con el nombre 
+    que aparece después del asterisco (texts en este caso). Dentro de la función, puedes trabajar con 
+    esa tupla como lo harías con cualquier otra tupla en Python.
+'''
+
+def print_upper_texts(*texts):
+    print(type(texts)) # <class 'tuple'>
+    for text in texts: # Itera sobre cada elemento de la tupla 'texts'
+        print(text.upper())  # Convierte cada texto en mayúsculas y lo imprime
 
 print_upper_texts("Hola", "Python", "MoureDev")
 print_upper_texts("Hola")
+
+'''
+<class 'tuple'>
+HOLA
+PYTHON
+MOUREDEV
+<class 'tuple'>
+HOLA
+'''

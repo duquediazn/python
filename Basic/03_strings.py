@@ -61,3 +61,5 @@ print(language.lower()) #python
 print(language.lower().isupper()) #False
 print(language.startswith("Py")) #False
 print("Py" == "py")  # False 
+print(sorted(language)) # sorted() devuelve una lista con los elementos del iterable ordenados ['h', 'n', 'o', 'p', 't', 'y']  https://www.w3schools.com/python/ref_func_sorted.asp
+print(len(language)) # 6

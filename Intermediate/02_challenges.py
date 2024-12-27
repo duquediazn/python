@@ -81,17 +81,19 @@ Hecho esto, imprime los números primos entre 1 y 100.
 
 
 def is_prime(n):
-    for i in range(2,n):
-        if n%i == 0:
-            return False
-    return True
+    if n >= 2:
+        for i in range(3,n):
+            if n%i == 0:
+                return False
+        return True
+    return False
 
-def print_primes():
-    for i in range(1, 101):
+def print_primes_between(ini, fin):
+    for i in range(ini, fin):
         if is_prime(i):
             print(i)
 
-#print_primes()
+
 
 '''
 #Moure:
@@ -105,13 +107,15 @@ def is_prime():
 
             for index in range(2, number):
                 if number % index == 0:
-                    is_divisible = Tru
+                    is_divisible = True
                     break
 
             if not is_divisible:
                 print(number)
 
 '''
+
+#print_primes_between(1, 101)
 
 """
 INVIRTIENDO CADENAS
@@ -126,7 +130,6 @@ def reverse(text: str):
         reversed=i+reversed
     return reversed
 
-print(reverse("Hola mundo"))
 
 '''
 #Moure:
@@ -138,3 +141,5 @@ def reverse(text):
         reversed_text += text[text_len - index - 1]
     return reversed_text
 '''
+
+#print(reverse("Hola mundo"))

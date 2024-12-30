@@ -59,10 +59,10 @@ print(re.findall(pattern, my_string))
 print(re.search(pattern, my_string))
 
 pattern = r"\d"
-print(re.findall(pattern, my_string))
+print(re.findall(pattern, my_string)) 
 
 pattern = r"\D"
-print(re.findall(pattern, my_string))
+print(re.findall(pattern, my_string))  
 
 pattern = r"[l].*"
 print(re.findall(pattern, my_string))

@@ -11,16 +11,17 @@
 
 # pip install pandas # Windows: py -m pip install pandas
 
-# pip list # Windows: py -m pip lsit
+# pip list # Windows: py -m pip list
 # pip uninstall pandas # Windows: py -m pip uninstall pandas
 # pip show numpy # Windows: py -m pip show numpy
 
 # pip install requests # Windows: py -m pip install requests
 
-import pandas #https://pandas.pydata.org/
-#from mypackage import arithmetics
-import requests
-import numpy #https://numpy.org/
+#import pandas # https://pandas.pydata.org/
+import requests # https://pypi.org/project/requests/
+import numpy # https://numpy.org/
+
+from mypackage import arithmetics # Nuestro propio paquete. Debemos crear un módulo __init__.py vacío.
 
 print(numpy.version.version)
 
@@ -38,5 +39,4 @@ print(response.json())
 
 # Arithmetics Package
 
-
-#print(arithmetics.sum_two_values(1, 4))
+print(arithmetics.sum_two_values(1, 4)) # 5

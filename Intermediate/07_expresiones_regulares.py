@@ -7,10 +7,10 @@ import re
 my_string = "Esta es la lección número 7: Lección llamada Expresiones Regulares"
 my_other_string = "Esta no es la lección número 6: Manejo de ficheros"
 
-match = re.match("Esta es la lección", my_string, re.I)
-print(match)
-start, end = match.span()
-print(my_string[start:end])
+match = re.match("Esta es la lección", my_string, re.I) # Con match() comprobamos si coinciden desde el principio (y hasta donde). re.I es un flag para ignorar el casing
+print(match) # <re.Match object; span=(0, 18), match='Esta es la lección'>
+start, end = match.span() # match.span() -> (0,18)
+print(my_string[start:end]) # Esta es la lección
 
 match = re.match("Esta no es la lección", my_other_string)
 # if not(match == None): # Otra forma de comprobar el None
@@ -20,27 +20,27 @@ if match is not None:
     start, end = match.span()
     print(my_other_string[start:end])
 
-print(re.match("Expresiones Regulares", my_string))
+print(re.match("Expresiones Regulares", my_string)) # None. Porque no cinciden desde el principio.
 
 # search
 
-search = re.search("lección", my_string, re.I)
+search = re.search("lección", my_string, re.I) # Como el match, pero no tiene que ser desde el principio
 print(search)
 start, end = search.span()
 print(my_string[start:end])
 
 # findall
 
-findall = re.findall("lección", my_string, re.I)
+findall = re.findall("lección", my_string, re.I) # Encuentra todas las coincidencias y las devuelve en una lista
 print(findall)
 
 # split
 
-print(re.split(":", my_string))
+print(re.split(":", my_string)) # Nos hace un split con el separador como primer argumento. Devuelve una lista.
 
 # sub
 
-print(re.sub("[l|L]ección", "LECCIÓN", my_string))
+print(re.sub("[l|L]ección", "LECCIÓN", my_string)) # Sustituye lección o Lección por LECCIÓN
 print(re.sub("Expresiones Regulares", "RegEx", my_string))
 
 

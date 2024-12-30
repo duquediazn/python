@@ -6,14 +6,14 @@
 # pip --version
 
 # pip install numpy
-import pandas
+""" import pandas
 from mypackage import arithmetics
-import requests
+import requests """
 import numpy
 
 print(numpy.version.version)
 
-numpy_array = numpy.array([35, 24, 62, 52, 30, 30, 17])
+""" numpy_array = numpy.array([35, 24, 62, 52, 30, 30, 17])
 print(type(numpy_array))
 
 print(numpy_array * 2)
@@ -34,4 +34,4 @@ print(response.json())
 # Arithmetics Package
 
 
-print(arithmetics.sum_two_values(1, 4))
+print(arithmetics.sum_two_values(1, 4)) """

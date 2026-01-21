@@ -1,14 +1,15 @@
-# ⚡ Introducción a FastAPI
-Guía práctica paso a paso para aprender a construir **APIs REST con FastAPI**, el framework moderno y veloz de Python para desarrollo backend.  
- 
-En este documento recorrerás desde los fundamentos hasta la autenticación con JWT y la conexión a bases de datos reales como **MongoDB**, usando un **proyecto completo de ejemplo** incluido en este repositorio.  
+# Introducción a FastAPI
+
+Guía práctica paso a paso para aprender a construir **APIs REST con FastAPI**, el framework moderno y veloz de Python para desarrollo backend.
+
+En este documento recorrerás desde los fundamentos hasta la autenticación con JWT y la conexión a bases de datos reales como **MongoDB**, usando un **proyecto completo de ejemplo** incluido en este repositorio.
 
 📁 **Proyecto de ejemplo:** [Backend/FastAPI](../backend/FastApi/)  
 (contiene el código base con rutas, autenticación y conexión a MongoDB)
 
 ---
 
-## 📋 Índice
+## Índice
 
 1. [Qué es FastAPI y por qué usarlo](#1-qué-es-fastapi-y-por-qué-usarlo--volver-al-inicio)
 2. [Estructura del proyecto](#2-estructura-del-proyecto--volver-al-inicio)
@@ -32,18 +33,18 @@ FastAPI está diseñado desde el inicio para aprovechar al máximo las caracter�
 
 ---
 
-### 🚀 Ventajas principales
+### Ventajas principales
 
-- **Rápido**: Su rendimiento es comparable a frameworks como **Node.js** o **Go** gracias a Starlette y Uvicorn.  
-- **Productivo**: Reduce la cantidad de código repetitivo gracias al tipado y la validación automática.  
-- **Seguro**: Integra fácilmente autenticación, validación de datos y manejo de errores.  
-- **Documentado automáticamente**: Genera documentación interactiva (Swagger UI y ReDoc) sin escribir una sola línea extra.  
-- **Basado en estándares**: Cumple con las especificaciones **OpenAPI** y **JSON Schema**.  
-- **Intuitivo**: Aprovecha los tipos de Python para ofrecer autocompletado en el editor y errores más claros.  
+- **Rápido**: Su rendimiento es comparable a frameworks como **Node.js** o **Go** gracias a Starlette y Uvicorn.
+- **Productivo**: Reduce la cantidad de código repetitivo gracias al tipado y la validación automática.
+- **Seguro**: Integra fácilmente autenticación, validación de datos y manejo de errores.
+- **Documentado automáticamente**: Genera documentación interactiva (Swagger UI y ReDoc) sin escribir una sola línea extra.
+- **Basado en estándares**: Cumple con las especificaciones **OpenAPI** y **JSON Schema**.
+- **Intuitivo**: Aprovecha los tipos de Python para ofrecer autocompletado en el editor y errores más claros.
 
 ---
 
-### ⚙️ Instalación y primer servidor
+### Instalación y primer servidor
 
 Para empezar, crea un entorno virtual y ejecuta:
 
@@ -56,23 +57,24 @@ Esto instala FastAPI junto a **Uvicorn**, el servidor ASGI recomendado.
 o alternativamente:  
 `uvicorn main:app --reload`
 
-**Accede a la API:**  
-- Endpoint principal: http://127.0.0.1:8000  
-- Documentación interactiva (Swagger UI): http://127.0.0.1:8000/docs  
-- Documentación alternativa (ReDoc): http://127.0.0.1:8000/redoc  
+**Accede a la API:**
+
+- Endpoint principal: http://127.0.0.1:8000
+- Documentación interactiva (Swagger UI): http://127.0.0.1:8000/docs
+- Documentación alternativa (ReDoc): http://127.0.0.1:8000/redoc
 
 ---
 
-### 🧠 Conceptos clave
+### Conceptos clave
 
 **ASGI**: (Asynchronous Server Gateway Interface) — sucesor de WSGI. Permite manejar peticiones de forma asíncrona y eficiente.  
 **OpenAPI**: estándar que define cómo describir y documentar una API REST. FastAPI lo genera automáticamente.  
 **Pydantic**: librería que valida y serializa datos usando anotaciones de tipo de Python.  
-**Uvicorn**: servidor ultrarrápido basado en ASGI para ejecutar la aplicación FastAPI.  
+**Uvicorn**: servidor ultrarrápido basado en ASGI para ejecutar la aplicación FastAPI.
 
 ---
 
-### 🧩 Ejemplo mínimo
+### Ejemplo mínimo
 
 El archivo más simple que puedes crear para iniciar una API con FastAPI es:
 
@@ -97,7 +99,7 @@ La estructura está organizada en módulos para mantener el código **limpio, re
 
 ---
 
-### 🧱 Estructura general
+### Estructura general
 
 ```
 ├── db
@@ -120,18 +122,21 @@ La estructura está organizada en módulos para mantener el código **limpio, re
 
 ---
 
-### 📂 Descripción de carpetas y archivos
+### Descripción de carpetas y archivos
 
 ### `main.py`
+
 Es el punto de entrada de la aplicación.  
 Aquí se crea la instancia principal de FastAPI (`app = FastAPI()`) y se incluyen los distintos **routers** que organizan las rutas de la API.
 
 Además:
+
 - Define las rutas base (`/` y `/url`).
 - Monta los recursos estáticos (imágenes, CSS, etc.) con `StaticFiles`.
 - Contiene los comentarios sobre cómo ejecutar el servidor y acceder a la documentación.
 
 Ejemplo desde el archivo:
+
 ```python
 app = FastAPI()
 
@@ -147,13 +152,14 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 ---
 
 ### 📁 `routers/`
+
 Contiene los diferentes módulos de rutas o endpoints de la API.  
 Cada archivo agrupa un conjunto de funcionalidades específicas, lo que facilita mantener y escalar la aplicación.
 
-- **`users.py`** → CRUD completo sobre una lista de usuarios (sin base de datos).  
-- **`products.py`** → Endpoints simples para listar productos (ejemplo básico).  
-- **`basic_auth_users.py`** → Ejemplo de autenticación básica usando OAuth2.  
-- **`jwt_auth_users.py`** → Ejemplo avanzado con autenticación JWT y contraseñas cifradas.  
+- **`users.py`** → CRUD completo sobre una lista de usuarios (sin base de datos).
+- **`products.py`** → Endpoints simples para listar productos (ejemplo básico).
+- **`basic_auth_users.py`** → Ejemplo de autenticación básica usando OAuth2.
+- **`jwt_auth_users.py`** → Ejemplo avanzado con autenticación JWT y contraseñas cifradas.
 - **`users_db.py`** → CRUD real conectado a una base de datos MongoDB.
 
 Cada uno define un `APIRouter` con su propio prefijo, etiquetas y respuestas personalizadas.
@@ -161,39 +167,41 @@ Cada uno define un `APIRouter` con su propio prefijo, etiquetas y respuestas per
 ---
 
 ### 📁 `db/`
+
 Contiene toda la lógica relacionada con la base de datos.
 
-- **`client.py`** → Configura la conexión a MongoDB, tanto local como remota (MongoDB Atlas).  
-- **`models/user.py`** → Define el modelo de usuario usando `Pydantic` para validar datos.  
+- **`client.py`** → Configura la conexión a MongoDB, tanto local como remota (MongoDB Atlas).
+- **`models/user.py`** → Define el modelo de usuario usando `Pydantic` para validar datos.
 - **`schemas/user.py`** → Define las funciones que transforman los datos de MongoDB a un formato compatible con FastAPI (maneja los `_id` y los convierte a `str`).
 
 ---
 
 ### 📁 `static/`
+
 Carpeta de recursos estáticos servidos por FastAPI, como imágenes o archivos públicos.
 
-- En este ejemplo: `static/images/utopia.png`  
+- En este ejemplo: `static/images/utopia.png`
 - Accesible desde: `http://127.0.0.1:8000/static/images/utopia.png`
 
 ---
 
-### 🧭 Flujo general de la aplicación
+### Flujo general de la aplicación
 
-1. **El servidor arranca** con `main.py`, creando una instancia de FastAPI.  
-2. **Se incluyen los routers** desde la carpeta `routers/`, agrupando la lógica por módulos.  
-3. **Cada router define endpoints** con sus modelos y dependencias.  
-4. **Los modelos y esquemas** en `/db` garantizan que los datos tengan la estructura y validación adecuadas.  
-5. **El cliente de MongoDB** maneja la persistencia de datos real en `users_db.py`.  
-6. **Los recursos estáticos** se sirven desde la carpeta `/static`.  
+1. **El servidor arranca** con `main.py`, creando una instancia de FastAPI.
+2. **Se incluyen los routers** desde la carpeta `routers/`, agrupando la lógica por módulos.
+3. **Cada router define endpoints** con sus modelos y dependencias.
+4. **Los modelos y esquemas** en `/db` garantizan que los datos tengan la estructura y validación adecuadas.
+5. **El cliente de MongoDB** maneja la persistencia de datos real en `users_db.py`.
+6. **Los recursos estáticos** se sirven desde la carpeta `/static`.
 
 ---
 
-### 💡 Claves de esta estructura
+### Claves de esta estructura
 
-- Facilita el mantenimiento y la legibilidad.  
-- Separa la lógica de negocio (routers) de la persistencia de datos (db).  
-- Permite escalar fácilmente la aplicación añadiendo nuevos módulos o routers.  
-- Es compatible con despliegues en la nube, por ejemplo en **Deta** o **Render**.  
+- Facilita el mantenimiento y la legibilidad.
+- Separa la lógica de negocio (routers) de la persistencia de datos (db).
+- Permite escalar fácilmente la aplicación añadiendo nuevos módulos o routers.
+- Es compatible con despliegues en la nube, por ejemplo en **Deta** o **Render**.
 
 ---
 
@@ -208,7 +216,7 @@ En esta sección aprenderás a crear una aplicación básica con FastAPI, defini
 
 ---
 
-### 🧩 Crear la aplicación
+### Crear la aplicación
 
 Toda app en FastAPI comienza creando una **instancia de la clase `FastAPI`**.  
 Esa instancia (`app`) será el núcleo donde se registran las rutas, middlewares, eventos, dependencias, etc.
@@ -229,11 +237,11 @@ Guarda este código en un archivo llamado `main.py`.
 
 ---
 
-### ⚙️ Ejecutar el servidor
+### Ejecutar el servidor
 
 Para arrancar la aplicación puedes usar cualquiera de estos dos comandos:
 
-- `fastapi dev main.py` → ejecuta el servidor en modo desarrollo (recarga automática).  
+- `fastapi dev main.py` → ejecuta el servidor en modo desarrollo (recarga automática).
 - `uvicorn main:app --reload` → alternativa equivalente usando Uvicorn directamente.
 
 Cuando el servidor arranca, verás un mensaje como:
@@ -253,13 +261,13 @@ Deberías ver la respuesta JSON:
 
 ---
 
-### 🌐 Documentación automática
+### Documentación automática
 
 FastAPI genera automáticamente la documentación de tu API gracias a **OpenAPI**.  
 Puedes acceder a dos interfaces diferentes:
 
 - **Swagger UI:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)  
-  Permite probar los endpoints directamente desde el navegador.  
+  Permite probar los endpoints directamente desde el navegador.
 - **ReDoc:** [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)  
   Ofrece una visualización más orientada a la lectura técnica de la API.
 
@@ -267,7 +275,7 @@ Ambas se generan a partir de los decoradores (`@app.get`, `@app.post`, etc.) y d
 
 ---
 
-### 🧠 Definir rutas y métodos
+### Definir rutas y métodos
 
 FastAPI usa **decoradores** para asociar rutas HTTP a funciones.  
 Cada decorador indica el método (GET, POST, PUT, DELETE...) y la ruta.
@@ -288,7 +296,7 @@ Puedes usar tipos nativos (`int`, `str`, `dict`) o modelos Pydantic para la vali
 
 ---
 
-### 🧭 Tipado y validación automática
+### Tipado y validación automática
 
 FastAPI valida y convierte automáticamente los tipos de datos gracias a las anotaciones de tipo en Python.  
 Por ejemplo:
@@ -304,13 +312,13 @@ Pero si intentas `/users/abc`, FastAPI devolverá automáticamente un error **42
 
 ---
 
-### 🧰 Probar endpoints
+### Probar endpoints
 
 Puedes probar tus endpoints de tres formas:
 
 1. **Desde la interfaz Swagger UI** (`/docs`)  
    → Ideal para desarrollo y testing rápido.
-2. **Desde un cliente HTTP** como Thunder Client, Postman o cURL.  
+2. **Desde un cliente HTTP** como Thunder Client, Postman o cURL.
 3. **Desde código Python o frontend**, realizando peticiones con `requests` o `fetch`.
 
 ---
@@ -324,14 +332,14 @@ FastAPI se encarga del resto: documentación, validación de tipos y manejo de e
 ## 4. Routers y modularización [🔝 Volver al inicio](#)
 
 A medida que tu aplicación crece, tener todas las rutas dentro de `main.py` se vuelve poco práctico.  
-FastAPI ofrece una herramienta muy poderosa para organizar el código: **`APIRouter`**.  
+FastAPI ofrece una herramienta muy poderosa para organizar el código: **`APIRouter`**.
 
-Los *routers* permiten dividir la API en **módulos independientes**, agrupando las rutas por tema o funcionalidad (por ejemplo: usuarios, productos, autenticación, etc.).  
+Los _routers_ permiten dividir la API en **módulos independientes**, agrupando las rutas por tema o funcionalidad (por ejemplo: usuarios, productos, autenticación, etc.).  
 Esto mejora la legibilidad, el mantenimiento y la escalabilidad del proyecto.
 
 ---
 
-### 🧩 Qué es un `APIRouter`
+### Qué es un `APIRouter`
 
 Un `APIRouter` es un objeto que agrupa un conjunto de rutas.  
 Cada módulo puede definir su propio router y luego integrarse en la aplicación principal con `include_router()`.
@@ -364,16 +372,16 @@ Con esto, el endpoint quedará disponible en:
 
 ---
 
-### 🧱 Ventajas de usar routers
+### Ventajas de usar routers
 
-- **Modularidad:** separa cada grupo de rutas por tema (usuarios, productos, auth, etc.).  
-- **Mantenibilidad:** puedes editar o eliminar un módulo sin afectar al resto.  
-- **Reutilización:** puedes importar routers en otros proyectos.  
-- **Documentación organizada:** gracias a `tags`, cada conjunto de rutas aparece agrupado en Swagger UI.  
+- **Modularidad:** separa cada grupo de rutas por tema (usuarios, productos, auth, etc.).
+- **Mantenibilidad:** puedes editar o eliminar un módulo sin afectar al resto.
+- **Reutilización:** puedes importar routers en otros proyectos.
+- **Documentación organizada:** gracias a `tags`, cada conjunto de rutas aparece agrupado en Swagger UI.
 
 ---
 
-### 🧭 Estructura modular en este proyecto
+### Estructura modular en este proyecto
 
 En este proyecto, todas las rutas están organizadas dentro de la carpeta `/routers`, cada una representando una parte del sistema:
 
@@ -426,7 +434,7 @@ app.include_router(users_db.router)
 
 ---
 
-### 🧩 Prefijos, etiquetas y respuestas
+### Prefijos, etiquetas y respuestas
 
 Al crear un router puedes definir tres parámetros muy útiles:
 
@@ -442,10 +450,11 @@ Esto evita repetir código y mantiene las rutas más limpias.
 
 ---
 
-### 🧠 Cómo se combinan en la documentación
+### Cómo se combinan en la documentación
 
 Gracias al uso de `tags`, FastAPI organiza automáticamente la documentación en grupos.  
 Por ejemplo, verás secciones separadas en `/docs` como:
+
 - **users**
 - **products**
 - **basicauth**
@@ -456,14 +465,15 @@ Cada grupo corresponde a uno de los routers definidos en la aplicación.
 
 ---
 
-### 💡 Conclusión
+### Conclusión
 
 Usar `APIRouter` es una **buena práctica esencial** en FastAPI.  
 Permite escalar tu aplicación sin perder claridad, y mantener cada parte del sistema aislada y bien documentada.
 
 En este proyecto:
-- Las rutas básicas están en `users.py` y `products.py`.  
-- Las rutas más avanzadas (autenticación y base de datos) se separan en sus propios routers.  
+
+- Las rutas básicas están en `users.py` y `products.py`.
+- Las rutas más avanzadas (autenticación y base de datos) se separan en sus propios routers.
 - `main.py` actúa como punto de unión de todos ellos.
 
 ---
@@ -478,13 +488,14 @@ FastAPI utiliza **Pydantic** para manejar la validación y serialización de dat
 Gracias a los **modelos Pydantic**, podemos definir la estructura de los datos esperados en nuestras peticiones y respuestas, asegurándonos de que cumplen con el formato correcto.
 
 Esto permite:
-- Validar automáticamente los datos de entrada (por ejemplo, del cuerpo de una solicitud POST).  
-- Generar documentación precisa y detallada.  
+
+- Validar automáticamente los datos de entrada (por ejemplo, del cuerpo de una solicitud POST).
+- Generar documentación precisa y detallada.
 - Convertir los datos en tipos nativos de Python sin esfuerzo.
 
 ---
 
-### 🧩 Qué es un modelo Pydantic
+### Qué es un modelo Pydantic
 
 Un **modelo Pydantic** es una clase que hereda de `BaseModel`.  
 Cada atributo de la clase representa un campo del modelo con su tipo de dato correspondiente.
@@ -503,13 +514,14 @@ class User(BaseModel):
 ```
 
 Con esta simple definición:
-- FastAPI valida que cada campo tenga el tipo correcto.  
-- Si un campo falta o tiene un tipo incorrecto, se devuelve automáticamente un error **422 Unprocessable Entity**.  
+
+- FastAPI valida que cada campo tenga el tipo correcto.
+- Si un campo falta o tiene un tipo incorrecto, se devuelve automáticamente un error **422 Unprocessable Entity**.
 - En Swagger, la documentación se genera con la estructura exacta del modelo.
 
 ---
 
-### 🧠 Validación automática
+### Validación automática
 
 FastAPI valida los datos de entrada automáticamente basándose en los tipos definidos.  
 Por ejemplo, si esperas un `int` y el cliente envía un `string`, FastAPI genera una respuesta con el error y el detalle del fallo.
@@ -551,7 +563,7 @@ Pero si envías un tipo incorrecto (por ejemplo `"age": "treinta"`), FastAPI dev
 
 ---
 
-### 🧱 Modelos opcionales y anidados
+### Modelos opcionales y anidados
 
 Puedes hacer que ciertos campos sean **opcionales** usando `Optional` del módulo `typing`.  
 Esto es muy útil cuando trabajas con bases de datos, ya que los IDs pueden generarse automáticamente.
@@ -572,7 +584,7 @@ Aquí, el campo `id` no es obligatorio al crear un usuario, ya que lo genera Mon
 
 ---
 
-### 🔁 Serialización y esquemas
+### Serialización y esquemas
 
 En FastAPI, la **serialización** (convertir datos Python en JSON) también se maneja automáticamente con Pydantic.  
 Cuando se devuelven objetos Pydantic desde un endpoint, FastAPI los convierte en JSON de forma automática.
@@ -596,7 +608,7 @@ Estas funciones convierten el formato nativo de MongoDB (`ObjectId`) a tipos com
 
 ---
 
-📘 **Alternativa con Pydantic para esquemas de respuesta**
+**Alternativa con Pydantic para esquemas de respuesta**
 
 En lugar de usar funciones manuales para transformar los datos, también puedes definir **modelos Pydantic dedicados** para controlar la estructura de los datos devueltos por la API.  
 Esto resulta especialmente útil cuando quieres diferenciar entre el modelo que se recibe al crear un recurso (**modelo de entrada**) y el que se devuelve al cliente (**modelo de salida**).
@@ -629,29 +641,31 @@ async def create_user(user: UserCreate):
 ```
 
 De esta manera:
-- FastAPI valida automáticamente los datos tanto de entrada como de salida.  
-- Swagger muestra ambos modelos claramente diferenciados.  
-- Puedes prescindir de las funciones de conversión manual cuando los datos ya tienen el formato adecuado.  
+
+- FastAPI valida automáticamente los datos tanto de entrada como de salida.
+- Swagger muestra ambos modelos claramente diferenciados.
+- Puedes prescindir de las funciones de conversión manual cuando los datos ya tienen el formato adecuado.
 
 ---
 
-### 🧩 Validación + Documentación automática
+### Validación + Documentación automática
 
 Cada vez que defines un modelo Pydantic, FastAPI lo usa para:
-- Validar automáticamente las entradas y salidas.  
-- Mostrar en Swagger el esquema de datos esperado en cada endpoint.  
+
+- Validar automáticamente las entradas y salidas.
+- Mostrar en Swagger el esquema de datos esperado en cada endpoint.
 - Generar ejemplos de peticiones y respuestas sin esfuerzo adicional.
 
 Esto hace que tu API esté **autodocumentada** y sea **segura por diseño**.
 
 ---
 
-### 💡 En resumen
+### En resumen
 
-- Usa `BaseModel` para definir la estructura de tus datos.  
-- Añade tipos de Python (`str`, `int`, `bool`, `list`, etc.) para activar la validación automática.  
-- Usa `Optional` para campos no obligatorios.  
-- Aprovecha las funciones de esquema (`schemas`) para adaptar los datos a tus respuestas JSON.  
+- Usa `BaseModel` para definir la estructura de tus datos.
+- Añade tipos de Python (`str`, `int`, `bool`, `list`, etc.) para activar la validación automática.
+- Usa `Optional` para campos no obligatorios.
+- Aprovecha las funciones de esquema (`schemas`) para adaptar los datos a tus respuestas JSON.
 - La documentación en `/docs` se genera automáticamente según tus modelos.
 
 ---
@@ -669,20 +683,20 @@ En esta sección veremos cómo construir endpoints CRUD usando **Pydantic** y li
 
 ---
 
-### 🧱 Estructura CRUD básica
+### Estructura CRUD básica
 
 Cada operación CRUD corresponde a un método HTTP:
 
-| Operación | Método | Descripción | Código de estado |
-|------------|---------|-------------|------------------|
-| Create     | POST    | Crear un nuevo recurso | 201 Created |
-| Read       | GET     | Obtener uno o varios recursos | 200 OK |
-| Update     | PUT     | Modificar un recurso existente | 200 OK |
-| Delete     | DELETE  | Eliminar un recurso existente | 204 No Content |
+| Operación | Método | Descripción                    | Código de estado |
+| --------- | ------ | ------------------------------ | ---------------- |
+| Create    | POST   | Crear un nuevo recurso         | 201 Created      |
+| Read      | GET    | Obtener uno o varios recursos  | 200 OK           |
+| Update    | PUT    | Modificar un recurso existente | 200 OK           |
+| Delete    | DELETE | Eliminar un recurso existente  | 204 No Content   |
 
 ---
 
-### 🧩 Ejemplo completo — CRUD de usuarios
+### Ejemplo completo — CRUD de usuarios
 
 El archivo `routers/users.py` incluye un ejemplo didáctico con todas las operaciones CRUD sobre una lista de usuarios.
 
@@ -709,7 +723,7 @@ users_list = [
 
 ---
 
-### 🧠 READ — Consultar datos
+### READ — Consultar datos
 
 FastAPI permite capturar parámetros tanto desde la **ruta (path)** como desde la **query (URL)**.
 
@@ -740,7 +754,7 @@ def search_user(id: int):
 
 ---
 
-### 🧩 CREATE — Crear datos
+### CREATE — Crear datos
 
 Para crear un nuevo usuario usamos el método **POST**.  
 FastAPI convierte automáticamente el cuerpo JSON en una instancia del modelo `User`.
@@ -758,7 +772,7 @@ Si el usuario ya existe, se lanza una excepción HTTP con código 422 y un mensa
 
 ---
 
-### 🧩 UPDATE — Modificar datos
+### UPDATE — Modificar datos
 
 El método **PUT** permite reemplazar un usuario existente.  
 Podemos buscar el usuario por ID y actualizarlo si existe.
@@ -778,7 +792,7 @@ async def user(user: User):
 
 ---
 
-### 🧩 DELETE — Eliminar datos
+### DELETE — Eliminar datos
 
 Para eliminar un recurso usamos el método **DELETE**.  
 Aquí eliminamos un usuario de la lista según su ID.
@@ -798,7 +812,7 @@ async def user(id: int):
 
 ---
 
-### 🧩 Manejo de errores con `HTTPException`
+### Manejo de errores con `HTTPException`
 
 `HTTPException` es una herramienta de FastAPI que permite devolver errores personalizados con su código y mensaje.  
 Se usa comúnmente para validar entradas o manejar casos donde el recurso no existe.
@@ -820,12 +834,12 @@ Esto genera automáticamente una respuesta JSON como:
 
 ---
 
-### 💡 Buenas prácticas CRUD
+### Buenas prácticas CRUD
 
-- Usa `response_model` para definir claramente lo que devuelve cada endpoint.  
-- Usa `status_code` para indicar correctamente el resultado (201, 200, 404, etc.).  
-- Lanza `HTTPException` en lugar de devolver diccionarios de error.  
-- Mantén funciones auxiliares separadas para la lógica de búsqueda o validación.  
+- Usa `response_model` para definir claramente lo que devuelve cada endpoint.
+- Usa `status_code` para indicar correctamente el resultado (201, 200, 404, etc.).
+- Lanza `HTTPException` en lugar de devolver diccionarios de error.
+- Mantén funciones auxiliares separadas para la lógica de búsqueda o validación.
 - Cuando uses bases de datos reales, recuerda usar identificadores únicos como `_id` o `uuid`.
 
 ---
@@ -844,26 +858,27 @@ Esta versión no cifra contraseñas ni genera tokens JWT — se usa principalmen
 
 ---
 
-### 🧩 Qué es OAuth2 Password
+### Qué es OAuth2 Password
 
 OAuth2 es un estándar que define cómo los clientes (aplicaciones, usuarios) pueden autenticarse y obtener acceso a recursos protegidos mediante **tokens**.  
 El flujo “Password” implica que el usuario envía su **nombre de usuario** y **contraseña**, y el servidor devuelve un token que luego se utiliza para acceder a rutas protegidas.
 
 ---
 
-### 🧱 Estructura del router
+### Estructura del router
 
 Archivo: `routers/basic_auth_users.py`
 
 Este módulo incluye:
-- Un diccionario que simula una base de datos de usuarios.  
-- Modelos `User` y `UserDB` definidos con Pydantic.  
-- Funciones auxiliares para buscar usuarios.  
-- Endpoints para **login** y para obtener el **usuario autenticado**.  
+
+- Un diccionario que simula una base de datos de usuarios.
+- Modelos `User` y `UserDB` definidos con Pydantic.
+- Funciones auxiliares para buscar usuarios.
+- Endpoints para **login** y para obtener el **usuario autenticado**.
 
 ---
 
-### 🧠 Dependencias y esquema de seguridad
+### Dependencias y esquema de seguridad
 
 FastAPI implementa OAuth2 mediante el esquema `OAuth2PasswordBearer`.  
 Este objeto indica que la API espera un token de autenticación en el encabezado HTTP `Authorization`.
@@ -875,13 +890,14 @@ oauth2 = OAuth2PasswordBearer(tokenUrl="login")
 ```
 
 Con esto, FastAPI:
-- Añade un campo de autenticación en Swagger UI.  
-- Permite que el endpoint de login genere el token.  
+
+- Añade un campo de autenticación en Swagger UI.
+- Permite que el endpoint de login genere el token.
 - Inyecta automáticamente el valor del token en las rutas protegidas.
 
 ---
 
-### 🧩 Modelos de usuario
+### Modelos de usuario
 
 ```python
 class User(BaseModel):
@@ -894,12 +910,12 @@ class UserDB(User):
     password: str
 ```
 
-- `User` → modelo público sin contraseña.  
-- `UserDB` → modelo interno que incluye el campo `password`.  
+- `User` → modelo público sin contraseña.
+- `UserDB` → modelo interno que incluye el campo `password`.
 
 ---
 
-### 🧩 Base de datos simulada
+### Base de datos simulada
 
 ```python
 users_db = {
@@ -924,7 +940,7 @@ Esta base de datos simulada sirve solo para pruebas, ya que las contraseñas se 
 
 ---
 
-### 🔐 Endpoint de login
+### Endpoint de login
 
 ```python
 @router.post("/login")
@@ -941,15 +957,16 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
 ```
 
 Aquí:
-- Se reciben `username` y `password` desde un formulario.  
-- Se valida la existencia del usuario y la coincidencia de la contraseña.  
-- Si todo es correcto, se devuelve un **token** (el nombre de usuario).  
+
+- Se reciben `username` y `password` desde un formulario.
+- Se valida la existencia del usuario y la coincidencia de la contraseña.
+- Si todo es correcto, se devuelve un **token** (el nombre de usuario).
 
 Este token se usará para acceder a rutas protegidas.
 
 ---
 
-### 🧩 Dependencia `current_user`
+### Dependencia `current_user`
 
 ```python
 async def current_user(token: str = Depends(oauth2)):
@@ -966,7 +983,7 @@ FastAPI se encarga de extraer el token del encabezado y pasarlo automáticamente
 
 ---
 
-### 🧩 Endpoint protegido `/users/me`
+### Endpoint protegido `/users/me`
 
 ```python
 @router.get("/users/me")
@@ -979,21 +996,21 @@ Si el token es inválido o el usuario está deshabilitado, se lanzará una excep
 
 ---
 
-### 🧠 Cómo probarlo
+### Cómo probarlo
 
-1. Accede a la documentación Swagger: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)  
-2. Busca el grupo **basicauth**.  
-3. Ejecuta el endpoint `/basicauth/login` con las credenciales de un usuario válido (por ejemplo: *duquediazn / 123456*).  
-4. Copia el token devuelto (el nombre de usuario).  
-5. Haz clic en el botón **Authorize** y pega el token como `Bearer <token>`.  
+1. Accede a la documentación Swagger: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+2. Busca el grupo **basicauth**.
+3. Ejecuta el endpoint `/basicauth/login` con las credenciales de un usuario válido (por ejemplo: _duquediazn / 123456_).
+4. Copia el token devuelto (el nombre de usuario).
+5. Haz clic en el botón **Authorize** y pega el token como `Bearer <token>`.
 6. Prueba el endpoint `/basicauth/users/me` para obtener los datos del usuario autenticado.
 
 ---
 
-### ⚠️ Limitaciones de este enfoque
+### Limitaciones de este enfoque
 
-- Las contraseñas no están cifradas.  
-- El token no tiene expiración ni verificación real.  
+- Las contraseñas no están cifradas.
+- El token no tiene expiración ni verificación real.
 - Cualquiera que conozca un nombre de usuario válido podría autenticarse.
 
 Por eso, en la siguiente sección implementaremos una versión más robusta:  
@@ -1005,13 +1022,14 @@ Por eso, en la siguiente sección implementaremos una versión más robusta:
 
 En esta sección aprenderás a implementar un sistema de **autenticación con JWT (JSON Web Tokens)** en FastAPI, basado en el archivo `routers/jwt_auth_users.py`.  
 Este método mejora la seguridad respecto al ejemplo anterior (autenticación básica), ya que:
+
 - Las contraseñas se almacenan **cifradas**.
 - Los tokens de acceso tienen **tiempo de expiración**.
 - Se valida la autenticidad del token antes de conceder acceso.
 
 ---
 
-### 🧩 Qué es un JWT
+### Qué es un JWT
 
 Un **JSON Web Token (JWT)** es un estándar abierto (RFC 7519) para transmitir información entre partes de forma segura.  
 Está compuesto por tres partes separadas por puntos:
@@ -1020,11 +1038,12 @@ Está compuesto por tres partes separadas por puntos:
 header.payload.signature
 ```
 
-- **Header**: indica el algoritmo de cifrado (por ejemplo, HS256).  
-- **Payload**: contiene los datos (claims), como el usuario o la expiración.  
+- **Header**: indica el algoritmo de cifrado (por ejemplo, HS256).
+- **Payload**: contiene los datos (claims), como el usuario o la expiración.
 - **Signature**: asegura que el token no ha sido alterado.
 
 Ejemplo visual de un JWT:
+
 ```
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 .eyJzdWIiOiJicmFpcyIsImV4cCI6MTcxOTM3MjY1OX0
@@ -1033,7 +1052,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
 
 ---
 
-### ⚙️ Dependencias necesarias
+### Dependencias necesarias
 
 Para trabajar con JWT y contraseñas cifradas, instalamos dos librerías adicionales:
 
@@ -1042,12 +1061,12 @@ pip install pyjwt
 pip install "passlib[bcrypt]"
 ```
 
-- **PyJWT** → para crear y validar tokens.  
+- **PyJWT** → para crear y validar tokens.
 - **Passlib** → para cifrar contraseñas de forma segura con el algoritmo bcrypt.
 
 ---
 
-### 🧱 Configuración del router
+### Configuración del router
 
 Archivo: `routers/jwt_auth_users.py`
 
@@ -1071,7 +1090,7 @@ SECRET = "201d573bd7d1344d3a3bfce1550b69102fd11be3db6d379508b6cccc58ea230b"
 
 ---
 
-### 🧩 Cifrado de contraseñas
+### Cifrado de contraseñas
 
 FastAPI no cifra contraseñas por sí mismo, pero podemos hacerlo fácilmente con Passlib:
 
@@ -1095,7 +1114,7 @@ crypt.verify(form.password, user.password)
 
 ---
 
-### 🧩 Funciones de búsqueda y autenticación
+### Funciones de búsqueda y autenticación
 
 ```python
 def search_user_db(username: str):
@@ -1124,7 +1143,7 @@ async def auth_user(token: str = Depends(oauth2)):
 
 ---
 
-### 🔐 Generación del token de acceso
+### Generación del token de acceso
 
 El endpoint `/jwtauth/login` genera un token JWT con un tiempo de expiración definido:
 
@@ -1155,7 +1174,7 @@ async def login(form: OAuth2PasswordRequestForm = Depends()):
 
 ---
 
-### 🧭 Verificación del usuario autenticado
+### Verificación del usuario autenticado
 
 El token se valida automáticamente al llamar a rutas protegidas.  
 La dependencia `current_user` comprueba que el token sea válido y que el usuario esté activo.
@@ -1169,7 +1188,7 @@ async def current_user(user: User = Depends(auth_user)):
 
 ---
 
-### 🔒 Endpoint protegido `/users/me`
+### Endpoint protegido `/users/me`
 
 ```python
 @router.get("/users/me")
@@ -1182,37 +1201,37 @@ Si no, se lanza una excepción **401 Unauthorized**.
 
 ---
 
-### 🧪 Cómo probarlo en Swagger
+### Cómo probarlo en Swagger
 
-1. Ir a: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)  
-2. Abrir la sección **jwtauth**.  
+1. Ir a: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+2. Abrir la sección **jwtauth**.
 3. Ejecutar `/jwtauth/login` con:
    - username: `nazadev`
    - password: `123456`
-4. Copiar el token devuelto.  
-5. Pulsar **Authorize** y pegarlo como: `Bearer <token>`.  
-6. Ejecutar `/jwtauth/users/me` → debe devolver el perfil del usuario autenticado.  
-7. Esperar más de 1 minuto y volver a intentarlo → el token habrá expirado.  
+4. Copiar el token devuelto.
+5. Pulsar **Authorize** y pegarlo como: `Bearer <token>`.
+6. Ejecutar `/jwtauth/users/me` → debe devolver el perfil del usuario autenticado.
+7. Esperar más de 1 minuto y volver a intentarlo → el token habrá expirado.
 
 ---
 
-### ⚖️ Diferencias clave con la autenticación básica
+### Diferencias clave con la autenticación básica
 
-| Característica | BasicAuth | JWTAuth |
-|----------------|------------|----------|
-| Contraseñas cifradas | ❌ No | ✅ Sí |
-| Expiración de token | ❌ No | ✅ Sí |
-| Validación de firma | ❌ No | ✅ Sí |
-| Seguridad real | Baja | Alta |
-| Uso recomendado | Pruebas / demos | Producción |
+| Característica       | BasicAuth       | JWTAuth    |
+| -------------------- | --------------- | ---------- |
+| Contraseñas cifradas | ❌ No           | ✅ Sí      |
+| Expiración de token  | ❌ No           | ✅ Sí      |
+| Validación de firma  | ❌ No           | ✅ Sí      |
+| Seguridad real       | Baja            | Alta       |
+| Uso recomendado      | Pruebas / demos | Producción |
 
 ---
 
-### 💡 En resumen
+### En resumen
 
-- FastAPI facilita la integración de JWT con PyJWT.  
-- Passlib permite cifrar y verificar contraseñas de forma segura.  
-- Los tokens pueden configurarse con expiración y campos personalizados.  
+- FastAPI facilita la integración de JWT con PyJWT.
+- Passlib permite cifrar y verificar contraseñas de forma segura.
+- Los tokens pueden configurarse con expiración y campos personalizados.
 - Es la forma recomendada de manejar autenticación en aplicaciones reales.
 
 ---
@@ -1227,19 +1246,20 @@ En esta sección integramos la API con **MongoDB** para tener persistencia real 
 
 ---
 
-### 🧰 Requisitos e instalación
+### Requisitos e instalación
 
 - Base de datos local: instala **MongoDB Community** y arráncala en tu equipo.
 - Base de datos en la nube: crea un clúster en **MongoDB Atlas**.
 
 Instala el driver de Python:
+
 ```
 pip install pymongo
 ```
 
 ---
 
-### 🔌 Cliente de MongoDB (`db/client.py`)
+### Cliente de MongoDB (`db/client.py`)
 
 Este archivo centraliza la conexión a la base de datos. Incluye dos opciones (local y Atlas):
 
@@ -1265,20 +1285,23 @@ db_client = MongoClient(MONGODB_URI)[MONGODB_DB]
 ```
 
 **Buenas prácticas recomendadas**
+
 - No subas credenciales al repositorio. Usa variables de entorno:
   - `MONGODB_URI` (cadena de conexión)
   - `MONGODB_DB` (nombre de la base de datos)
 - Usa `python-dotenv` o el sistema de configuración de tu framework para cargar variables.
 - Define un **TTL** o índices cuando proceda (por ejemplo, para tokens o campos únicos como `email`).
 
-Para que el código anterior funcione deberás crear un `.env` en la raíz del proyecto y añadir tus credenciales de MongoDB Atlas tal que así: 
+Para que el código anterior funcione deberás crear un `.env` en la raíz del proyecto y añadir tus credenciales de MongoDB Atlas tal que así:
+
 ```
 MONGODB_URI=mongodb+srv://TU_URI
 MONGODB_DB=TU_DB
 ```
+
 ---
 
-### 🧩 Modelo de datos (`db/models/user.py`)
+### Modelo de datos (`db/models/user.py`)
 
 El **modelo Pydantic** de la entidad usuario valida la entrada/salida a nivel de API:
 
@@ -1297,7 +1320,7 @@ class User(BaseModel):
 
 ---
 
-### 🔁 Serialización (schemas) (`db/schemas/user.py`)
+### Serialización (schemas) (`db/schemas/user.py`)
 
 MongoDB usa `ObjectId` para `_id`, que **no es JSON serializable**. Este módulo convierte documentos de MongoDB a respuestas aptas para la API:
 
@@ -1325,6 +1348,7 @@ def users_schema(users) -> list:
 Este router implementa un CRUD completo contra MongoDB con `pymongo` y utiliza los **schemas** para serializar.
 
 **Prefijo y metadatos**
+
 ```python
 router = APIRouter(
     prefix="/userdb",
@@ -1334,15 +1358,18 @@ router = APIRouter(
 ```
 
 **Listar usuarios**
+
 ```python
 @router.get("/", response_model=list[User])
 async def users():
     return users_schema(db_client.users.find())
 ```
+
 - Recupera todo con `find()` y serializa con `users_schema`.
 - Declara `response_model=list[User]` para documentación y validación de salida.
 
 **Obtener por id (Path y Query)**
+
 ```python
 @router.get("/{id}")
 async def user(id: str):
@@ -1352,10 +1379,12 @@ async def user(id: str):
 async def user(id: str):
     return search_user("_id", ObjectId(id))
 ```
+
 - Acepta `id` tanto en **ruta** como en **query**.
 - Usa `bson.ObjectId(id)` para buscar por `_id`.
 
 **Crear usuario**
+
 ```python
 @router.post("/", response_model=User, status_code=status.HTTP_201_CREATED)
 async def user(user: User):
@@ -1368,11 +1397,13 @@ async def user(user: User):
     new_user = user_schema(db_client.users.find_one({"_id": id}))
     return User(**new_user)
 ```
+
 - Verifica duplicados por **email** antes de insertar.
 - Elimina `id` del payload (Mongo genera `_id`).
 - Devuelve el recurso creado con `201 Created`.
 
 **Actualizar usuario**
+
 ```python
 @router.put("/", response_model=User)
 async def user(user: User):
@@ -1381,9 +1412,11 @@ async def user(user: User):
     db_client.users.find_one_and_replace({"_id": ObjectId(user.id)}, user_dict)
     return search_user("_id", ObjectId(user.id))
 ```
+
 - Reemplaza el documento completo. Devuelve el estado actual del recurso.
 
 **Eliminar usuario**
+
 ```python
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT)
 async def user(id: str):
@@ -1391,10 +1424,12 @@ async def user(id: str):
     if not found:
         return {"error": "No se ha eliminado el usuario"}
 ```
+
 - Elimina por `_id`.
 - Usa `204 No Content`. **Nota**: con 204 no debe devolverse cuerpo; si quieres un mensaje, usa `200` o `202`.
 
 **Búsqueda auxiliar**
+
 ```python
 def search_user(field: str, key):
     try:
@@ -1406,7 +1441,7 @@ def search_user(field: str, key):
 
 ---
 
-### 🧪 Probar el flujo completo
+### Probar el flujo completo
 
 1. Arranca el servidor:
    - `fastapi dev main.py`  
@@ -1421,7 +1456,7 @@ def search_user(field: str, key):
 
 ---
 
-### ✅ Buenas prácticas y mejoras
+### Buenas prácticas y mejoras
 
 - **Índices y unicidad**: crea un índice único en `email` para evitar duplicados a nivel de base de datos.
 - **Validación de entrada/salida**: usa `response_model` y, si procede, **modelos separados** (`UserCreate`, `UserUpdate`, `UserResponse`).
@@ -1443,7 +1478,7 @@ FastAPI (vía **Starlette**) permite servir archivos estáticos como imágenes, 
 
 ---
 
-### 🧩 Montaje de la carpeta estática
+### Montaje de la carpeta estática
 
 En este proyecto, los estáticos se exponen montando un directorio en una **ruta pública**:
 
@@ -1458,10 +1493,12 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 - `name="static"` registra el subapp para referencia interna.
 
 **Ejemplo incluido en el repo**
+
 - Archivo: `static/images/utopia.png`
 - URL pública: `http://127.0.0.1:8000/static/images/utopia.png`
 
 Estructura mínima:
+
 ```
 static/
 └── images/
@@ -1470,7 +1507,7 @@ static/
 
 ---
 
-### 🔗 Cómo referenciar los archivos
+### Cómo referenciar los archivos
 
 - Desde HTML: `<img src="/static/images/utopia.png" alt="Utopia" />`
 - Desde CSS: `background-image: url('/static/images/utopia.png');`
@@ -1480,7 +1517,7 @@ static/
 
 ---
 
-### ⚙️ Opciones y comportamiento
+### Opciones y comportamiento
 
 - **Cacheo**: los servidores intermedios y navegadores suelen cachear estáticos. Versiona tus ficheros (por ejemplo `app.3c1f.js`) si actualizas con frecuencia.
 - **Tipos MIME**: se infieren por extensión (png, jpg, svg, css, js, woff2, etc.).
@@ -1489,7 +1526,7 @@ static/
 
 ---
 
-### 🧠 Buenas prácticas
+### Buenas prácticas
 
 - **Organiza por tipo**: `static/images`, `static/css`, `static/js`, `static/fonts` para mayor claridad.
 - **No mezcles secretos**: nunca coloques credenciales o archivos sensibles en `static/`; todo lo que haya ahí es **público**.
@@ -1498,7 +1535,7 @@ static/
 
 ---
 
-### 🧪 Comprobación rápida
+### Comprobación rápida
 
 1. Arranca el servidor: `fastapi dev main.py` (o `uvicorn main:app --reload`).
 2. Abre en el navegador: `http://127.0.0.1:8000/static/images/utopia.png`.
@@ -1516,7 +1553,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### ✅ Checklist rápido (mínimos recomendados)
+### Checklist rápido (mínimos recomendados)
 
 - Definir `response_model` en endpoints y usar modelos de **entrada/salida** (DTOs) separados.
 - Usar `HTTPException` con **códigos correctos** (201/200/204/400/401/403/404/409/422/500).
@@ -1530,7 +1567,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### 🧱 Arquitectura y organización
+### Arquitectura y organización
 
 - **Separación por capas**:
   - `routers/` (interfaces HTTP, validación inicial)
@@ -1543,7 +1580,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### ⚙️ Configuración y entorno
+### Configuración y entorno
 
 - Cargar settings desde **variables de entorno** (y opcional `.env`) con un objeto de configuración (por ejemplo, `BaseSettings`).
 - Definir claves: `MONGODB_URI`, `MONGODB_DB`, `JWT_SECRET`, `JWT_EXPIRES_MINUTES`, `ENV`, `DEBUG`.
@@ -1551,7 +1588,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### 🔒 Seguridad
+### Seguridad
 
 - **CORS**: habilitar sólo orígenes necesarios.
 - **JWT**:
@@ -1566,7 +1603,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### 🗄️ Datos y persistencia
+### Datos y persistencia
 
 - **MongoDB**:
   - Índices (único en `email`), TTL si aplica, y proyecciones para minimizar payload.
@@ -1578,7 +1615,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### 🚦 Validación y documentación
+### Validación y documentación
 
 - **Pydantic**: validadores, `constr`, `EmailStr`, `Field(..., example=...)`.
 - **OpenAPI**:
@@ -1588,7 +1625,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### 🧪 Testing y calidad
+### Testing y calidad
 
 - **Tests**: `pytest` con `TestClient`/`httpx` (sincrónico/async).
 - **Fixtures**: base de datos fake o **test database**; datos semilla para pruebas.
@@ -1599,7 +1636,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### 🚀 Rendimiento y producción
+### Rendimiento y producción
 
 - **Servidor**: `uvicorn` detrás de **gunicorn/uvicorn workers** o en plataforma gestionada.
 - **Concurrencia**: preferir drivers **async** (Motor para Mongo) en rutas `async`.
@@ -1612,7 +1649,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### 📊 Observabilidad
+### Observabilidad
 
 - **Logging** estructurado (JSON) con niveles por entorno.
 - **Trazas** (OpenTelemetry) + **métricas** (Prometheus/Grafana).
@@ -1620,7 +1657,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### 📦 Despliegue
+### Despliegue
 
 - **Contenedores**: Docker multi-stage, imagen mínima, variables por entorno, `read-only fs` si posible.
 - **Plataformas**: Deta, Render, Railway, Fly.io, u orquestación en Kubernetes.
@@ -1629,7 +1666,7 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 ---
 
-### 🔜 Próximos pasos para este proyecto
+### Próximos pasos para este proyecto
 
 - Proteger `users_db` con **JWT** (sección 8) y roles.
 - Introducir **modelos de entrada/salida** (p. ej., `UserCreate`, `UserUpdate`, `UserResponse`) en `users_db`.
@@ -1643,8 +1680,8 @@ Esta sección recopila recomendaciones para que tu API con FastAPI sea **manteni
 
 Con estas prácticas llevarás tu API FastAPI del estado didáctico a un entorno **robusto y productivo**, manteniendo código limpio, seguridad razonable y una base sólida para escalar y evolucionar.
 
-
 ---
 
 ## 🔗 Navegación
+
 ⬅️ [Lección anterior](./intermediate.md) | [Volver al índice principal](../README.md)

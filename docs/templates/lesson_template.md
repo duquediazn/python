@@ -1,21 +1,21 @@
-# 🐍 Título de la Lección
+# Título de la Lección
 
 
 ---
 
-## 📋 Índice 
+## Índice 
 - [Concepto 1](#concepto-1)
 - [Concepto 2](#concepto-2)
 - [Ejemplos](#ejemplos)
 
 ---
 
-## 🧠 Concepto 1 [🔝 Volver al inicio](#)
+## Concepto 1 [🔝 Volver al inicio](#)
 
 
 ---
 
-## 🧩 Concepto 2 [🔝 Volver al inicio](#)
+## Concepto 2 [🔝 Volver al inicio](#)
 
 
 ---

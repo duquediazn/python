@@ -19,14 +19,18 @@ Este repositorio recopila scripts y ejercicios prácticos que he ido desarrollan
 - Python ≥ 3.10
 - Se recomienda usar un entorno virtual:
 
-python -m venv venv  
-source venv/bin/activate # Linux/macOS  
+```bash
+python -m venv venv
+source venv/bin/activate # Linux/macOS
 venv\Scripts\activate # Windows
+```
 
 - Para ejecutar ejemplos de FastAPI:
 
-pip install fastapi uvicorn  
+```bash
+pip install fastapi uvicorn
 uvicorn main:app --reload
+```
 
 ---
 

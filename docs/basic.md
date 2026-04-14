@@ -4,14 +4,14 @@
 
 ## Índice
 
-1. [Hola Mundo y variables](#-hola-mundo-y-variables--volver-al-inicio)
+1. [Hola Mundo y variables](#hola-mundo-y-variables--volver-al-inicio)
 2. [Operadores](#operadores-aritméticos--volver-al-inicio)
-3. [Strings](#-strings--volver-al-inicio)
-4. [Estructuras de datos](#-estructuras-de-datos--volver-al-inicio)
-5. [Condicionales y bucles](#-condicionales-y-bucles--volver-al-inicio)
-6. [Funciones](#️-funciones--volver-al-inicio)
-7. [Clases y excepciones](#-clases-y-excepciones--volver-al-inicio)
-8. [Módulos](#-módulos--volver-al-inicio)
+3. [Strings](#strings--volver-al-inicio)
+4. [Estructuras de datos](#estructuras-de-datos--volver-al-inicio)
+5. [Condicionales y bucles](#condicionales-y-bucles--volver-al-inicio)
+6. [Funciones](#️funciones--volver-al-inicio)
+7. [Clases y excepciones](#clases-y-excepciones--volver-al-inicio)
+8. [Módulos](#módulos--volver-al-inicio)
 
 ---
 
@@ -504,7 +504,7 @@ print(my_list) # Hola Python
 print(type(my_list)) # <class 'str'>
 ```
 
-> ⚠️ Cuidado: reasignar una lista a otro tipo destruye la estructura anterior.
+> ⚠️ Cuidado: reasignar una lista a otro tipo deja inaccesible la estructura anterior.
 
 #### Búsqueda
 
@@ -1417,6 +1417,7 @@ print(D.__mro__)
 > 🔹 En herencia múltiple, Python sigue el algoritmo **C3 Linearization**.  
 > 🔹 Este orden puede consultarse con `__mro__` o `help(Clase)`.  
 > 🔹 El orden de búsqueda de métodos es **dinámico** y depende de la jerarquía.
+> 🔹 super() no significa "mi padre" sino "ve al siguiente en el MRO después de mí"
 
 #### Ejemplo práctico de `super()` con herencia múltiple
 

@@ -1416,7 +1416,7 @@ print(D.__mro__)
 
 > 🔹 En herencia múltiple, Python sigue el algoritmo **C3 Linearization**.  
 > 🔹 Este orden puede consultarse con `__mro__` o `help(Clase)`.  
-> 🔹 El orden de búsqueda de métodos es **dinámico** y depende de la jerarquía.
+> 🔹 El orden de búsqueda de métodos es **dinámico** y depende de la jerarquía.  
 > 🔹 super() no significa "mi padre" sino "ve al siguiente en el MRO después de mí"
 
 #### Ejemplo práctico de `super()` con herencia múltiple
@@ -1642,7 +1642,7 @@ Permiten dividir un programa grande en varios archivos más manejables.
 Archivo: `my_module.py`
 
 ```python
-Módulo para pruebas:
+#Módulo para pruebas:
 def sumValue(numberOne, numberTwo, numberThree):
     print(numberOne + numberTwo + numberThree)
 

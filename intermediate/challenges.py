@@ -21,7 +21,7 @@ def fizz_buzz():
         else:
             print(i)
             
-#fizz_buzz()
+fizz_buzz()
 
 """
 ¿ES UN ANAGRAMA?
@@ -32,18 +32,7 @@ verdadero o falso (Bool) según sean o no anagramas.
 - NO hace falta comprobar que ambas palabras existan.
 - Dos palabras exactamente iguales no son anagrama.
 """
-'''
-def is_anagram(palabra1 : str, palabra2 : str): 
-    if palabra1.lower() == palabra2.lower() or len(palabra1) != len(palabra2):
-        return False
-    for i in palabra1.lower():
-        if palabra2.lower().count(i) < 1:
-            return False
-    return True
 
-print(is_anagram("Army", "Mary"))
-'''
-#Moure:
 def is_anagram(word_one, word_two):
     if word_one.lower() == word_two.lower():
         return False
@@ -71,7 +60,7 @@ def fibonacci():
         fib_0=fib_1
         fib_1=fib_n    
 
-#fibonacci()
+fibonacci()
 
 """
 ¿ES UN NÚMERO PRIMO?
@@ -81,39 +70,18 @@ Hecho esto, imprime los números primos entre 1 y 100.
 
 
 def is_prime(n):
-    if n >= 2:
+    if n <= 2:
+        return False
+    else:
         for i in range(3,n):
             if n%i == 0:
                 return False
         return True
-    return False
-
+        
 def print_primes_between(ini, fin):
     for i in range(ini, fin):
         if is_prime(i):
             print(i)
-
-
-
-'''
-#Moure:
-def is_prime():
-
-    for number in range(1, 101):
-
-        if number >= 2:
-
-            is_divisible = False
-
-            for index in range(2, number):
-                if number % index == 0:
-                    is_divisible = True
-                    break
-
-            if not is_divisible:
-                print(number)
-
-'''
 
 print_primes_between(1, 101)
 
@@ -132,8 +100,6 @@ def reverse(text: str):
 
 
 '''
-#Moure:
-
 def reverse(text):
     text_len = len(text)
     reversed_text = ""

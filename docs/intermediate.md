@@ -631,6 +631,84 @@ txt_file.close() # Cerramos recurso
 > 🔹 El modo `"a"` permite añadir texto sin sobrescribir el contenido existente.  
 > 🔹 Es buena práctica cerrar siempre los archivos, incluso si no hay errores.
 
+### Operaciones comunes con `os` (rutas y archivos)
+
+Además de `open()`, la librería estándar `os` se usa mucho para trabajar con rutas y gestionar archivos.
+
+```python
+import os
+
+base_dir = "intermediate"
+file_name = "notas.txt"
+file_path = os.path.join(base_dir, file_name)
+
+# Crear carpeta si no existe
+os.makedirs(base_dir, exist_ok=True)
+
+# Crear/escribir archivo
+with open(file_path, "w", encoding="utf-8") as f:
+    f.write("Primera línea\n")
+
+# Verificar existencia
+print(os.path.exists(file_path))  # True
+print(os.path.isfile(file_path))  # True
+
+# Listar contenido de una carpeta
+print(os.listdir(base_dir))
+```
+
+```python
+import os
+
+old_path = os.path.join("intermediate", "notas.txt")
+new_path = os.path.join("intermediate", "notas_v2.txt")
+
+# Renombrar archivo
+if os.path.exists(old_path):
+    os.rename(old_path, new_path)
+
+# Obtener tamaño en bytes
+if os.path.exists(new_path):
+    print(os.path.getsize(new_path))
+
+# Eliminar archivo
+if os.path.exists(new_path):
+    os.remove(new_path)
+```
+
+> 🔹 `os.path.join()` crea rutas portables (Windows, Linux, macOS).  
+> 🔹 `os.makedirs(..., exist_ok=True)` evita errores si la carpeta ya existe.  
+> 🔹 Comprueba siempre con `exists()` antes de renombrar o eliminar.
+
+### También con `pathlib` (alternativa moderna)
+
+Para operaciones de rutas/archivos, `pathlib` suele ser más legible y expresivo.
+
+```python
+from pathlib import Path
+
+base_dir = Path("intermediate")
+file_path = base_dir / "notas_pathlib.txt"
+
+base_dir.mkdir(parents=True, exist_ok=True)
+file_path.write_text("Hola desde pathlib\n", encoding="utf-8")
+
+print(file_path.exists())   # True
+print(file_path.is_file())  # True
+print([p.name for p in base_dir.iterdir()])
+
+new_path = base_dir / "notas_pathlib_v2.txt"
+file_path.rename(new_path)
+print(new_path.stat().st_size)
+new_path.unlink()
+```
+
+### `os` vs `pathlib`: ¿cuándo usar cada uno?
+
+- Usa `pathlib` en código nuevo cuando trabajes principalmente con rutas y archivos (más claro y orientado a objetos).
+- Usa `os` cuando también necesites utilidades del sistema operativo: variables de entorno (`os.environ`), directorio actual (`os.getcwd()`), procesos (`os.system()`), etc.
+- Ambos son estándar de Python y pueden convivir en el mismo proyecto.
+
 ### Archivos JSON (.json)
 
 El formato JSON es ideal para **almacenar datos estructurados** (diccionarios, listas…).  

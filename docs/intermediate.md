@@ -11,7 +11,7 @@
 5. [Manejo de archivos](#manejo-de-archivos--volver-al-inicio)
 6. [Expresiones regulares](#expresiones-regulares--volver-al-inicio)
 7. [Gestión de paquetes y módulos](#gestión-de-paquetes-y-módulos--volver-al-inicio)
-8. [Challenges: Retos de programación sencillos](#retos-de-programación-sencillos)
+8. [Challenges: Retos de programación sencillos](#retos-de-programación-sencillos--volver-al-inicio)
 
 ---
 

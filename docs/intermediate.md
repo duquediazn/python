@@ -4,14 +4,14 @@
 
 ## Índice
 
-1. [Fechas y tiempos](#-fechas-y-tiempos--volver-al-inicio)
-2. [List comprehensions y lambdas](#-list-comprehensions--volver-al-inicio)
-3. [Funciones de orden superior](#-funciones-de-orden-superior--volver-al-inicio)
-4. [Gestión de errores](#-gestión-de-errores--volver-al-inicio)
-5. [Manejo de archivos](#-manejo-de-archivos--volver-al-inicio)
-6. [Expresiones regulares](#-expresiones-regulares--volver-al-inicio)
-7. [Gestión de paquetes y módulos](#-gestión-de-paquetes-y-módulos--volver-al-inicio)
-8. [Challenges: Retos de programación sencillos]()
+1. [Fechas y tiempos](#fechas-y-tiempos--volver-al-inicio)
+2. [List comprehensions y lambdas](#list-comprehensions--volver-al-inicio)
+3. [Funciones de orden superior](#funciones-de-orden-superior--volver-al-inicio)
+4. [Gestión de errores](#gestión-de-errores--volver-al-inicio)
+5. [Manejo de archivos](#manejo-de-archivos--volver-al-inicio)
+6. [Expresiones regulares](#expresiones-regulares--volver-al-inicio)
+7. [Gestión de paquetes y módulos](#gestión-de-paquetes-y-módulos--volver-al-inicio)
+8. [Challenges: Retos de programación sencillos](#retos-de-programación-sencillos)
 
 ---
 

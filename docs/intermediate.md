@@ -280,7 +280,7 @@ print(my_list)
 #### Consejo
 
 Las _list comprehensions_ son ideales para listas **pequeñas o medianas**.  
-Si procesas colecciones muy grandes, usa **generadores** o **funciones con `yield`** para evitar cargar toda la lista en memoria.
+Si procesas colecciones muy grandes, usa [generadores](https://www.learnpython.org/es/Generators) o **funciones con `yield`** para evitar cargar toda la lista en memoria.
 
 ---
 

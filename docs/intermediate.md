@@ -11,7 +11,8 @@
 5. [Manejo de archivos](#manejo-de-archivos--volver-al-inicio)
 6. [Expresiones regulares](#expresiones-regulares--volver-al-inicio)
 7. [Gestión de paquetes y módulos](#gestión-de-paquetes-y-módulos--volver-al-inicio)
-8. [Challenges: Retos de programación sencillos](#retos-de-programación-sencillos--volver-al-inicio)
+8. [Arrays en python](#arrays-en-python--volver-al-inicio)
+9. [Challenges: Retos de programación sencillos](#retos-de-programación-sencillos--volver-al-inicio)
 
 ---
 
@@ -1257,6 +1258,45 @@ print(arithmetics.sum_two_values(1, 4))
 > - Puedes crear y reutilizar tus propios **paquetes locales** o publicarlos en PyPI.
 
 ---
+
+## Arrays en python [🔝 Volver al inicio](#)
+
+Para trabajar con arrays en Python (estructuras de datos con un tamaño fijo y un solo tipo de dato, a diferencia de las listas que son dinámicas y heterogéneas), tenemos principalmente dos opciones: el módulo nativo `array` y la librería `numpy`. 
+
+### ¿Cómo se usan?
+#### A. El módulo array (Nativo)
+Es parte de la librería estándar de Python. Se usa principalmente cuando necesitas ahorrar memoria pero no requieres hacer operaciones matemáticas complejas.
+```python
+import array
+
+# Se debe especificar el tipo: 'i' para enteros, 'd' para decimales (float)
+mi_array = array.array('i', [1, 2, 3, 4])
+print(mi_array)
+```
+
+#### B. NumPy Arrays (El estándar de la industria)
+Es una librería externa. Es la opción preferida porque permite realizar operaciones matemáticas sobre todo el array sin usar bucles for. 
+
+```python
+import numpy as np
+
+# Se crean mucho más fácil y son ultra rápidos
+np_array = np.array([1, 2, 3, 4])
+print(np_array * 2)  # Resultado: [2, 4, 6, 8]
+```
+
+### Diferencias clave: Listas vs. Arrays
+|Característica | Listas de Python | Arrays (array o numpy) |
+| ------------- | -----------------| ---------------------- |
+|Tipo de datos | Pueden mezclar todo (strings, ints, objetos).	| Homogéneos: Todos los elementos deben ser del mismo tipo.
+|Memoria | Consumen mucha más memoria (almacenan punteros).	| Muy eficientes: Almacenan los datos de forma contigua.
+|Rendimiento | Lentas para cálculos masivos.	| Ultra rápidos (especialmente NumPy) por su implementación en C.
+|Funcionalidad | Métodos básicos (append, pop). | NumPy permite álgebra lineal, estadística y cálculos vectorizados.
+
+### ¿Cuándo usar cada uno?
+- Usa Listas si vas a guardar pocos elementos o si los datos son de diferentes tipos.
+- Usa el módulo `array` si estás en un entorno con memoria muy limitada y solo necesitas una colección simple de números.
+- Usa `NumPy` para cualquier cosa que involucre ciencia de datos, machine learning o si tienes que procesar miles de números eficientemente. 
 
 ## Retos de programación sencillos [🔝 Volver al inicio](#)
 

@@ -1261,11 +1261,11 @@ print(arithmetics.sum_two_values(1, 4))
 
 ## Arrays en python [🔝 Volver al inicio](#)
 
-Para trabajar con arrays en Python (estructuras de datos con un tamaño fijo y un solo tipo de dato, a diferencia de las listas que son dinámicas y heterogéneas), tenemos principalmente dos opciones: el módulo nativo `array` y la librería `numpy`. 
+Para trabajar con arrays en Python tenemos principalmente dos opciones: el módulo nativo `array` y la librería `numpy`. 
 
 ### ¿Cómo se usan?
 #### A. El módulo array (Nativo)
-Es parte de la librería estándar de Python. Se usa principalmente cuando necesitas ahorrar memoria pero no requieres hacer operaciones matemáticas complejas.
+Es parte de la librería estándar de Python. Se usa principalmente cuando necesitas ahorrar memoria pero no requieres hacer operaciones matemáticas complejas. Este tipo de array es unidimensional.
 ```python
 import array
 
@@ -1273,9 +1273,20 @@ import array
 mi_array = array.array('i', [1, 2, 3, 4])
 print(mi_array)
 ```
+Los arrays son tipos de secuencias que se comportan de forma similar a las listas, a excepción que el tipo de objeto guardado debe definirse.
+
+```python
+# Añadir un elemento al final (in-place)
+arr.append(5)
+# Añadir varios elementos
+arr.extend([6, 7])
+print(arr)  # array('i', [1, 2, 3, 4, 5, 6, 7])
+```
+> [array — Arreglos eficientes de valores numéricos](https://docs.python.org/es/3.9/library/array.html)
 
 #### B. NumPy Arrays (El estándar de la industria)
 Es una librería externa. Es la opción preferida porque permite realizar operaciones matemáticas sobre todo el array sin usar bucles for. 
+Permite múltiples dimensiones, es más rápido para cálculos matemáticos y requiere tipos de datos homogéneos.
 
 ```python
 import numpy as np
@@ -1284,6 +1295,20 @@ import numpy as np
 np_array = np.array([1, 2, 3, 4])
 print(np_array * 2)  # Resultado: [2, 4, 6, 8]
 ```
+
+Añadir elementos (usando np.append) devuelve un nuevo array, no modifica el original, lo que puede ser lento en bucles:
+
+```python
+# Añadir elemento (devuelve un NUEVO array)
+np_arr = np.append(np_arr, [5])
+print(np_arr)  # [1 2 3 4 5]
+
+# Para insertar en una posición específica
+np_arr = np.insert(np_arr, 1, 99) # Insertar 99 en índice 1
+print(np_arr)  # [ 1 99  2  3  4  5]
+```
+
+> [numpy.array](https://numpy.org/doc/stable/reference/generated/numpy.array.html)
 
 ### Diferencias clave: Listas vs. Arrays
 |Característica | Listas de Python | Arrays (array o numpy) |

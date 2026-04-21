@@ -704,11 +704,15 @@ print(new_path.stat().st_size)
 new_path.unlink()
 ```
 
-- El operador `/` aquí no representa una división numérica; en pathlib, está sobrecargado para significar "unir partes de la ruta". Esto es preferible a la concatenación manual de cadenas porque es seguro para cualquier plataforma (por ejemplo, utiliza el separador correcto tanto en Windows como en Linux/macOS).
-- Con `parents=True`, Python también creará cualquier carpeta de nivel superior (padre) que falte en la ruta, no solo el directorio final. Con `exist_ok=True`, no se producirá ningún error si el directorio ya existe, lo que hace que la operación sea segura para ejecutarse repetidamente. Sin estos parámetros, la falta de carpetas superiores o la existencia previa del directorio de destino podrían generar excepciones.
-- `base_dir.iterdir()` devuelve cada ruta hija (archivos y subdirectorios) una por una.
-- `print(new_path.stat().st_size)` lee los metadatos del sistema de archivos con `stat()` e imprime el tamaño del archivo en bytes a través de `st_size`. Esto confirma que el archivo renombrado sigue presente y muestra su tamaño actual.
-- Finalmente, `new_path.unlink()` elimina ese archivo del disco. Un error común es que `unlink()` elimina archivos, no directorios, y genera un error si el archivo no existe, a menos que se utilice `missing_ok=True`.
+> 🔹 El operador `/` aquí no representa una división numérica; en pathlib, está sobrecargado para significar "unir partes de la ruta". Esto es preferible a la concatenación manual de cadenas porque es seguro para cualquier plataforma (por ejemplo, utiliza el separador correcto tanto en Windows como en Linux/macOS).
+> 
+> 🔹 Con `parents=True`, Python también creará cualquier carpeta de nivel superior (padre) que falte en la ruta, no solo el directorio final. Con `exist_ok=True`, no se producirá ningún error si el directorio ya existe, lo que hace que la operación sea segura para ejecutarse repetidamente. Sin estos parámetros, la falta de carpetas superiores o la existencia previa del directorio de destino podrían generar excepciones.
+> 
+> 🔹 `base_dir.iterdir()` devuelve cada ruta hija (archivos y subdirectorios) una por una.
+> 
+> 🔹 `print(new_path.stat().st_size)` lee los metadatos del sistema de archivos con `stat()` e imprime el tamaño del archivo en bytes a través de `st_size`. Esto confirma que el archivo renombrado sigue presente y muestra su tamaño actual.
+> 
+> 🔹 Finalmente, `new_path.unlink()` elimina ese archivo del disco. Un error común es que `unlink()` elimina archivos, no directorios, y genera un error si el archivo no existe, a menos que se utilice `missing_ok=True`.
 
 ### `os` vs `pathlib`: ¿cuándo usar cada uno?
 

@@ -7,6 +7,10 @@ En este documento recorrerás desde los fundamentos hasta la autenticación con 
 📁 **Proyecto de ejemplo:** [Backend/FastAPI](../backend/FastApi/)  
 (contiene el código base con rutas, autenticación y conexión a MongoDB)
 
+⚠️ Para aprender **BIEN** FastAPI: 
+- Mírate la [documentación oficial](https://fastapi.tiangolo.com/learn/), es muy completa y fácil de entender.
+- O si lo prefieres úsala para ampliar/complementar los conceptos vistos en esta guía/tutorial.
+
 ---
 
 ## Índice

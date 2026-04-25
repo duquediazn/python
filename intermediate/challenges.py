@@ -93,19 +93,32 @@ sin usar funciones propias del lenguaje que lo hagan de forma automática.
 """
 
 def reverse(text: str):
+    temp_list = []
+    n = len(text)
+    
+    # Recorremos de atrás hacia adelante
+    for i in range(n):
+        temp_list.append(text[n-1-i])
+        
+    # Unimos todo al final (una sola operación de memoria)
+    return "".join(temp_list)
+
+print(reverse("Hola mundo"))
+
+"""
+Es mejor evitar hacer cosas como, por ejemplo, esta: 
+def reverse(text: str):
     reversed=""
     for i in text:
         reversed=i+reversed
     return reversed
 
+Ya que esta operación de concatenación en un bucle for, 
+debido a la inmutabilidad de los string, es de complejidad O(n^2).
+Es decir, en cada iteración estamos creando un nuevo string en la memoria
+y copiando todo el contenido anterior en él.
 
-'''
-def reverse(text):
-    text_len = len(text)
-    reversed_text = ""
-    for index in range(0, text_len):
-        reversed_text += text[text_len - index - 1]
-    return reversed_text
-'''
-
-print(reverse("Hola mundo"))
+Sin embargo, la complejidad del ejemplo es de O(n), ya que esta solo recorre 
+el texto una vez y hace una unión final. es la forma más eficiente si
+no se puede usar [::-1]
+"""

@@ -1335,65 +1335,7 @@ print(np_arr)  # [ 1 99  2  3  4  5]
 
 ## Retos de programación sencillos [🔝 Volver al inicio](#)
 
-Esta sección recopila **ejercicios prácticos básicos** de Python que te ayudarán a aplicar todo lo aprendido hasta ahora:  
-estructuras de control, funciones, bucles, tipos de datos, etc.
-
 Cada reto está implementado en el archivo [`challenges.py`](../intermediate/challenges.py).  
-Puedes ejecutarlo directamente o copiar los ejemplos en un notebook o entorno interactivo.
-
----
-
-### Lista de retos incluidos
-
-1. **Fizz Buzz**  
-   Imprime los números del 1 al 100, sustituyendo los múltiplos de 3 por `"fizz"`,  
-   los de 5 por `"buzz"` y los de ambos por `"fizzbuzz"`.
-
-2. **¿Es un anagrama?**  
-   Función que recibe dos palabras y devuelve `True` o `False`  
-   dependiendo de si son anagramas o no.
-
-3. **Sucesión de Fibonacci**  
-   Imprime los primeros 50 números de la serie de Fibonacci,  
-   empezando por 0 y 1.
-
-4. **¿Es un número primo?**  
-   Comprueba si un número es primo y muestra todos los números primos entre 1 y 100.
-
-5. **Invertir cadenas**  
-   Invierte una cadena de texto sin usar funciones integradas como `[::-1]` o `reversed()`.
-
----
-
-### Cómo ejecutar los retos
-
-Ejecuta el archivo directamente desde consola:
-
-```python
-python challenges.py
-```
-
-O importa las funciones desde otro script para probarlas de forma independiente:
-
-```python
-from challenges import fizz_buzz, is_anagram, fibonacci, print_primes_between, reverse
-
-fizz_buzz()
-print(is_anagram("Amor", "Roma"))
-fibonacci()
-print_primes_between(1, 101)
-print(reverse("Hola mundo"))
-```
-
----
-
-### Objetivo
-
-Estos ejercicios están diseñados para reforzar la **lógica de programación**,  
-la **comprensión de estructuras de control** y el **uso de funciones** en Python.
-
-> Practica, modifica y extiende estos retos.  
-> Puedes proponer nuevas versiones más complejas (por ejemplo, añadir entrada del usuario, usar listas o expresiones lambda).
 
 ---
 

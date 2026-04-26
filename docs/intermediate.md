@@ -1334,10 +1334,11 @@ print(np_arr)  # [ 1 99  2  3  4  5]
 - Usa el módulo `array` si estás en un entorno con memoria muy limitada y solo necesitas una colección simple de números.
 - Usa `NumPy` para cualquier cosa que involucre ciencia de datos, machine learning o si tienes que procesar miles de números eficientemente. 
 
-## Anotaciones de tipo [🔝 Volver al inicio](#)
-- Python tiene soporte para "anotaciones de tipos" opcionales (también llamadas "type hints").
-- Estas "anotaciones de tipos" o type hints son una sintaxis especial que permite declarar el tipo de una variable.
-- Al declarar tipos para tus variables, los editores y herramientas te pueden proporcionar un mejor soporte.
+## Anotaciones de tipo [🔝 Volver al inicio] (#)
+
+Python tiene soporte para anotaciones de tipos opcionales ("type hints") con las que podemos declarar el tipo de una variable.
+
+De esta manera, los editores de texto te pueden proporcionar un mejor soporte.
 
 ### Variables
 ```python
@@ -1351,6 +1352,8 @@ x : int
 ```
 
 ### Colecciones
+Hay que importar de del módulo `typing`
+
 ```python
 from typing import List, Set, Dict, Tuple
 
@@ -1371,14 +1374,19 @@ t : Tuple[int, str, float, bool] = (1, 'Hola', 15.6, True)
 # seguido de puntos suspensivos
 t : Tuple[float, ...] = (12.2, 15.3, 18.4, 16.2)
 ```
-Si deseamos definir una lista de varios tipos de datos no podemos hacer el mismo procedimiento que se realiza con las tuplas. Para esto debemos hacer uso de la función Union del módulo typing.
+
+Si deseamos definir una lista de varios tipos de datos no podemos hacer el mismo procedimiento que se realiza con las tuplas. 
+
+Para esto debemos hacer uso de la función `Union` del módulo typing.
 
 ```python
 from typing import List, Union
 
 l: List[Union[int, str, float]] = [3, 5, 'hola', 'mundo', 15.6]
 ```
+
 ### Funciones
+
 ```python
 def numero_texto(num: int) -> str:
     return str(num)
@@ -1400,7 +1408,9 @@ def imprimir_lista(x:List[int]) -> List[str]:
 
 imprimir_lista(lista)
 ```
+
 ### Clases
+
 ```python
 class MiClase:
 
@@ -1422,13 +1432,16 @@ instancia: MiClase = MiClase()
 
 El uso de estas anotaciones facilita el mantenimiento del código y la legibilidad del mismo. Sin embargo, es importante recordar que **estas anotaciones no impiden que el código de Python se ejecute.**
 
-Fuentes: 
-> [Anotaciones de tipo en python - DEV community](https://dev.to/andersonpozo/anotaciones-de-tipo-en-python-1oi1)
-> 
-> [Introducción a tipos en python - FastApi](https://fastapi.tiangolo.com/es/python-types/)
+También puedes combinar las anotaciones de tipo con la librería `mypy`, se trata de un verificador de tipos estático opcional para Python que mejora la calidad del código al detectar errores comunes antes de la ejecución. 
 
-Más sobre type hints:
+```bash
+python3 -m pip install -U mypy
+```
+
 > [typing — Support for type hints](https://docs.python.org/3/library/typing.html)
+>
+> [mypy - Optional Static Typing for Python](https://mypy-lang.org/) 
+
 
 ## Retos de programación sencillos [🔝 Volver al inicio](#)
 

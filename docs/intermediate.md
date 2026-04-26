@@ -12,7 +12,8 @@
 6. [Expresiones regulares](#expresiones-regulares--volver-al-inicio)
 7. [Gestión de paquetes y módulos](#gestión-de-paquetes-y-módulos--volver-al-inicio)
 8. [Arrays en python](#arrays-en-python--volver-al-inicio)
-9. [Challenges: Retos de programación sencillos](#retos-de-programación-sencillos--volver-al-inicio)
+9. [Anotaciones de tipo](#anotaciones-de-tipo--volver-al-inicio)
+10. [Challenges: Retos de programación sencillos](#retos-de-programación-sencillos--volver-al-inicio)
 
 ---
 
@@ -1332,6 +1333,102 @@ print(np_arr)  # [ 1 99  2  3  4  5]
 - Usa Listas si vas a guardar pocos elementos o si los datos son de diferentes tipos.
 - Usa el módulo `array` si estás en un entorno con memoria muy limitada y solo necesitas una colección simple de números.
 - Usa `NumPy` para cualquier cosa que involucre ciencia de datos, machine learning o si tienes que procesar miles de números eficientemente. 
+
+## Anotaciones de tipo [🔝 Volver al inicio](#)
+- Python tiene soporte para "anotaciones de tipos" opcionales (también llamadas "type hints").
+- Estas "anotaciones de tipos" o type hints son una sintaxis especial que permite declarar el tipo de una variable.
+- Al declarar tipos para tus variables, los editores y herramientas te pueden proporcionar un mejor soporte.
+
+### Variables
+```python
+a : int = 12
+b : float = 15.5
+c : bool = True
+d : str = 'Python'
+
+# Variable sin inicializar
+x : int
+```
+
+### Colecciones
+```python
+from typing import List, Set, Dict, Tuple
+
+# Para las listas y los sets solo basta especificar
+# el tipo entre corchetes
+l : List[int] = [10, 20, 30]
+s : Set[int] ={6, 9}
+
+# Para los diccionarios debemos definir el tipo de datos para
+# la clave y su valor
+d : Dict[str, int] = {'item': 23}
+
+# Para las tuplas podemos definir el tipo de dato
+# para cada elemento en caso de que la tupla sea de tamaño fijo
+t : Tuple[int, str, float, bool] = (1, 'Hola', 15.6, True)
+
+# Si la tupla es de tamaño variable debemos definir el tipo
+# seguido de puntos suspensivos
+t : Tuple[float, ...] = (12.2, 15.3, 18.4, 16.2)
+```
+Si deseamos definir una lista de varios tipos de datos no podemos hacer el mismo procedimiento que se realiza con las tuplas. Para esto debemos hacer uso de la función Union del módulo typing.
+
+```python
+from typing import List, Union
+
+l: List[Union[int, str, float]] = [3, 5, 'hola', 'mundo', 15.6]
+```
+### Funciones
+```python
+def numero_texto(num: int) -> str:
+    return str(num)
+
+def suma(n1: int, n2: int) -> int:
+    return n1+n2
+
+# Para valores por default debemos especificar
+# el valor luego del tipo como una declaración normal de una variable
+def multiplicacion(n1: int, n2:float=2.5) -> float:
+    return n1*n2
+
+from typing import List
+
+lista: List[int] = [1, 2, 3, 4, 5]
+
+def imprimir_lista(x:List[int]) -> List[str]:
+    print(str(x))
+
+imprimir_lista(lista)
+```
+### Clases
+```python
+class MiClase:
+
+    attr1 : int = 100
+    attr2 : str
+
+    # Podemos usar la palabra None en caso de que el
+    # método no retorne ningún valor
+    def __init__(self) -> None:
+        ...
+
+    def metodo(self, n1: int, n2: int) -> int:
+        return n1+n2
+
+# Podemos incluir anotaciones referentes a la clase
+# directamente en la instancia de la clase
+instancia: MiClase = MiClase()
+```
+
+El uso de estas anotaciones facilita el mantenimiento del código y la legibilidad del mismo. Sin embargo, es importante recordar que **estas anotaciones no impiden que el código de Python se ejecute.**
+
+Fuentes: 
+> [Anotaciones de tipo en python - DEV community](https://dev.to/andersonpozo/anotaciones-de-tipo-en-python-1oi1)
+> 
+> [Introducción a tipos en python - FastApi](https://fastapi.tiangolo.com/es/python-types/)
+
+Más sobre type hints:
+> [typing — Support for type hints](https://docs.python.org/3/library/typing.html)
 
 ## Retos de programación sencillos [🔝 Volver al inicio](#)
 

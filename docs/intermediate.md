@@ -1334,7 +1334,7 @@ print(np_arr)  # [ 1 99  2  3  4  5]
 - Usa el módulo `array` si estás en un entorno con memoria muy limitada y solo necesitas una colección simple de números.
 - Usa `NumPy` para cualquier cosa que involucre ciencia de datos, machine learning o si tienes que procesar miles de números eficientemente. 
 
-## Anotaciones de tipo [🔝 Volver al inicio] (#)
+## Anotaciones de tipo [🔝 Volver al inicio](#)
 
 Python tiene soporte para anotaciones de tipos opcionales ("type hints") con las que podemos declarar el tipo de una variable.
 

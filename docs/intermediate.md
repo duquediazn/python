@@ -1432,7 +1432,7 @@ instancia: MiClase = MiClase()
 
 El uso de estas anotaciones facilita el mantenimiento del código y la legibilidad del mismo. Sin embargo, es importante recordar que **estas anotaciones no impiden que el código de Python se ejecute.**
 
-También puedes combinar las anotaciones de tipo con la librería `mypy`, se trata de un verificador de tipos estático opcional para Python que mejora la calidad del código al detectar errores comunes antes de la ejecución. 
+También puedes combinar las anotaciones de tipo con la librería `mypy`, un verificador de tipos estático opcional para Python que mejora la calidad del código al detectar errores comunes antes de la ejecución. 
 
 ```bash
 python3 -m pip install -U mypy

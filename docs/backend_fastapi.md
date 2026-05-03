@@ -53,7 +53,7 @@ FastAPI está diseñado desde el inicio para aprovechar al máximo las caracter�
 Para empezar, crea un entorno virtual y ejecuta:
 
 **Instalación:**  
-`pip install "fastapi[all]"`  
+`pip install "fastapi[standard]"`  
 Esto instala FastAPI junto a **Uvicorn**, el servidor ASGI recomendado.
 
 **Ejecución del servidor:**  

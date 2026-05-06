@@ -93,19 +93,14 @@ sin usar funciones propias del lenguaje que lo hagan de forma automática.
 """
 
 def reverse(text: str):
-    reversed=""
-    for i in text:
-        reversed=i+reversed
-    return reversed
-
-
-'''
-def reverse(text):
-    text_len = len(text)
-    reversed_text = ""
-    for index in range(0, text_len):
-        reversed_text += text[text_len - index - 1]
-    return reversed_text
-'''
+    temp_list = []
+    n = len(text)
+    
+    # Recorremos de atrás hacia adelante
+    for i in range(n):
+        temp_list.append(text[n-1-i])
+        
+    # Unimos todo al final (una sola operación de memoria)
+    return "".join(temp_list)
 
 print(reverse("Hola mundo"))

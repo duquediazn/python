@@ -43,6 +43,7 @@ La teoría presenta una serie de códigos de ejemplo, estos se pueden consultar 
 
 - Libro de referencia: _Python Crash Course (3rd Edition)_ — Eric Matthes
 - Documentación oficial: https://docs.python.org/es/3/
-- Tutorial interactivo: https://www.learnpython.org/es/
+- El libro de python (español): https://ellibrodepython.com/
+- Tutorial interactivo: https://www.learnpython.org/
 
 ---

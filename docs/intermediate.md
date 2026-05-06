@@ -11,7 +11,9 @@
 5. [Manejo de archivos](#manejo-de-archivos--volver-al-inicio)
 6. [Expresiones regulares](#expresiones-regulares--volver-al-inicio)
 7. [Gestión de paquetes y módulos](#gestión-de-paquetes-y-módulos--volver-al-inicio)
-8. [Challenges: Retos de programación sencillos](#retos-de-programación-sencillos--volver-al-inicio)
+8. [Arrays en python](#arrays-en-python--volver-al-inicio)
+9. [Anotaciones de tipo](#anotaciones-de-tipo--volver-al-inicio)
+10. [Challenges: Retos de programación sencillos](#retos-de-programación-sencillos--volver-al-inicio)
 
 ---
 
@@ -280,7 +282,7 @@ print(my_list)
 #### Consejo
 
 Las _list comprehensions_ son ideales para listas **pequeñas o medianas**.  
-Si procesas colecciones muy grandes, usa [generadores](https://www.learnpython.org/es/Generators) o **funciones con `yield`** para evitar cargar toda la lista en memoria.
+Si procesas colecciones muy grandes, usa [generadores](https://ellibrodepython.com/yield-python) o **funciones con `yield`** para evitar cargar toda la lista en memoria.
 
 ---
 
@@ -702,6 +704,16 @@ file_path.rename(new_path)
 print(new_path.stat().st_size)
 new_path.unlink()
 ```
+
+> 🔹 El operador `/` aquí no representa una división numérica; en pathlib, está sobrecargado para significar "unir partes de la ruta". Esto es preferible a la concatenación manual de cadenas porque es seguro para cualquier plataforma (por ejemplo, utiliza el separador correcto tanto en Windows como en Linux/macOS).
+> 
+> 🔹 Con `parents=True`, Python también creará cualquier carpeta de nivel superior (padre) que falte en la ruta, no solo el directorio final. Con `exist_ok=True`, no se producirá ningún error si el directorio ya existe, lo que hace que la operación sea segura para ejecutarse repetidamente. Sin estos parámetros, la falta de carpetas superiores o la existencia previa del directorio de destino podrían generar excepciones.
+> 
+> 🔹 `base_dir.iterdir()` devuelve cada ruta hija (archivos y subdirectorios) una por una.
+> 
+> 🔹 `print(new_path.stat().st_size)` lee los metadatos del sistema de archivos con `stat()` e imprime el tamaño del archivo en bytes a través de `st_size`. Esto confirma que el archivo renombrado sigue presente y muestra su tamaño actual.
+> 
+> 🔹 Finalmente, `new_path.unlink()` elimina ese archivo del disco. Un error común es que `unlink()` elimina archivos, no directorios, y genera un error si el archivo no existe, a menos que se utilice `missing_ok=True`.
 
 ### `os` vs `pathlib`: ¿cuándo usar cada uno?
 
@@ -1258,67 +1270,182 @@ print(arithmetics.sum_two_values(1, 4))
 
 ---
 
+## Arrays en python [🔝 Volver al inicio](#)
+
+Para trabajar con arrays en Python tenemos principalmente dos opciones: el módulo nativo `array` y la librería `numpy`. 
+
+### ¿Cómo se usan?
+#### A. El módulo array (Nativo)
+Es parte de la librería estándar de Python. Se usa principalmente cuando necesitas ahorrar memoria pero no requieres hacer operaciones matemáticas complejas. Este tipo de array es unidimensional.
+```python
+import array
+
+# Se debe especificar el tipo: 'i' para enteros, 'd' para decimales (float)
+mi_array = array.array('i', [1, 2, 3, 4])
+print(mi_array)
+```
+Los arrays son tipos de secuencias que se comportan de forma similar a las listas, a excepción que el tipo de objeto guardado debe definirse.
+
+```python
+# Añadir un elemento al final (in-place)
+arr.append(5)
+# Añadir varios elementos
+arr.extend([6, 7])
+print(arr)  # array('i', [1, 2, 3, 4, 5, 6, 7])
+```
+> [array — Arreglos eficientes de valores numéricos](https://docs.python.org/es/3.9/library/array.html)
+
+#### B. NumPy Arrays (El estándar de la industria)
+Es una librería externa. Es la opción preferida porque permite realizar operaciones matemáticas sobre todo el array sin usar bucles for. 
+Permite múltiples dimensiones, es más rápido para cálculos matemáticos y requiere tipos de datos homogéneos.
+
+```python
+import numpy as np
+
+# Se crean mucho más fácil y son ultra rápidos
+np_array = np.array([1, 2, 3, 4])
+print(np_array * 2)  # Resultado: [2, 4, 6, 8]
+```
+
+Añadir elementos (usando np.append) devuelve un nuevo array, no modifica el original, lo que puede ser lento en bucles:
+
+```python
+# Añadir elemento (devuelve un NUEVO array)
+np_arr = np.append(np_arr, [5])
+print(np_arr)  # [1 2 3 4 5]
+
+# Para insertar en una posición específica
+np_arr = np.insert(np_arr, 1, 99) # Insertar 99 en índice 1
+print(np_arr)  # [ 1 99  2  3  4  5]
+```
+
+> [numpy.array](https://numpy.org/doc/stable/reference/generated/numpy.array.html)
+
+### Diferencias clave: Listas vs. Arrays
+|Característica | Listas de Python | Arrays (array o numpy) |
+| ------------- | -----------------| ---------------------- |
+|Tipo de datos | Pueden mezclar todo (strings, ints, objetos).	| Homogéneos: Todos los elementos deben ser del mismo tipo.
+|Memoria | Consumen mucha más memoria (almacenan punteros).	| Muy eficientes: Almacenan los datos de forma contigua.
+|Rendimiento | Lentas para cálculos masivos.	| Ultra rápidos (especialmente NumPy) por su implementación en C.
+|Funcionalidad | Métodos básicos (append, pop). | NumPy permite álgebra lineal, estadística y cálculos vectorizados.
+
+### ¿Cuándo usar cada uno?
+- Usa Listas si vas a guardar pocos elementos o si los datos son de diferentes tipos.
+- Usa el módulo `array` si estás en un entorno con memoria muy limitada y solo necesitas una colección simple de números.
+- Usa `NumPy` para cualquier cosa que involucre ciencia de datos, machine learning o si tienes que procesar miles de números eficientemente. 
+
+## Anotaciones de tipo [🔝 Volver al inicio](#)
+
+Python tiene soporte para anotaciones de tipos opcionales ("type hints") con las que podemos declarar el tipo de una variable.
+
+De esta manera, los editores de texto te pueden proporcionar un mejor soporte.
+
+### Variables
+```python
+a : int = 12
+b : float = 15.5
+c : bool = True
+d : str = 'Python'
+
+# Variable sin inicializar
+x : int
+```
+
+### Colecciones
+Hay que importar de del módulo `typing`
+
+```python
+from typing import List, Set, Dict, Tuple
+
+# Para las listas y los sets solo basta especificar
+# el tipo entre corchetes
+l : List[int] = [10, 20, 30]
+s : Set[int] ={6, 9}
+
+# Para los diccionarios debemos definir el tipo de datos para
+# la clave y su valor
+d : Dict[str, int] = {'item': 23}
+
+# Para las tuplas podemos definir el tipo de dato
+# para cada elemento en caso de que la tupla sea de tamaño fijo
+t : Tuple[int, str, float, bool] = (1, 'Hola', 15.6, True)
+
+# Si la tupla es de tamaño variable debemos definir el tipo
+# seguido de puntos suspensivos
+t : Tuple[float, ...] = (12.2, 15.3, 18.4, 16.2)
+```
+
+Si deseamos definir una lista de varios tipos de datos no podemos hacer el mismo procedimiento que se realiza con las tuplas. 
+
+Para esto debemos hacer uso de la función `Union` del módulo typing.
+
+```python
+from typing import List, Union
+
+l: List[Union[int, str, float]] = [3, 5, 'hola', 'mundo', 15.6]
+```
+
+### Funciones
+
+```python
+def numero_texto(num: int) -> str:
+    return str(num)
+
+def suma(n1: int, n2: int) -> int:
+    return n1+n2
+
+# Para valores por default debemos especificar
+# el valor luego del tipo como una declaración normal de una variable
+def multiplicacion(n1: int, n2:float=2.5) -> float:
+    return n1*n2
+
+from typing import List
+
+lista: List[int] = [1, 2, 3, 4, 5]
+
+def imprimir_lista(x:List[int]) -> List[str]:
+    print(str(x))
+
+imprimir_lista(lista)
+```
+
+### Clases
+
+```python
+class MiClase:
+
+    attr1 : int = 100
+    attr2 : str
+
+    # Podemos usar la palabra None en caso de que el
+    # método no retorne ningún valor
+    def __init__(self) -> None:
+        ...
+
+    def metodo(self, n1: int, n2: int) -> int:
+        return n1+n2
+
+# Podemos incluir anotaciones referentes a la clase
+# directamente en la instancia de la clase
+instancia: MiClase = MiClase()
+```
+
+El uso de estas anotaciones facilita el mantenimiento del código y la legibilidad del mismo. Sin embargo, es importante recordar que **estas anotaciones no impiden que el código de Python se ejecute.**
+
+También puedes combinar las anotaciones de tipo con la librería `mypy`, un verificador de tipos estático opcional para Python que mejora la calidad del código al detectar errores comunes antes de la ejecución. 
+
+```bash
+python3 -m pip install -U mypy
+```
+
+> [typing — Support for type hints](https://docs.python.org/3/library/typing.html)
+>
+> [mypy - Optional Static Typing for Python](https://mypy-lang.org/) 
+
+
 ## Retos de programación sencillos [🔝 Volver al inicio](#)
 
-Esta sección recopila **ejercicios prácticos básicos** de Python que te ayudarán a aplicar todo lo aprendido hasta ahora:  
-estructuras de control, funciones, bucles, tipos de datos, etc.
-
 Cada reto está implementado en el archivo [`challenges.py`](../intermediate/challenges.py).  
-Puedes ejecutarlo directamente o copiar los ejemplos en un notebook o entorno interactivo.
-
----
-
-### Lista de retos incluidos
-
-1. **Fizz Buzz**  
-   Imprime los números del 1 al 100, sustituyendo los múltiplos de 3 por `"fizz"`,  
-   los de 5 por `"buzz"` y los de ambos por `"fizzbuzz"`.
-
-2. **¿Es un anagrama?**  
-   Función que recibe dos palabras y devuelve `True` o `False`  
-   dependiendo de si son anagramas o no.
-
-3. **Sucesión de Fibonacci**  
-   Imprime los primeros 50 números de la serie de Fibonacci,  
-   empezando por 0 y 1.
-
-4. **¿Es un número primo?**  
-   Comprueba si un número es primo y muestra todos los números primos entre 1 y 100.
-
-5. **Invertir cadenas**  
-   Invierte una cadena de texto sin usar funciones integradas como `[::-1]` o `reversed()`.
-
----
-
-### Cómo ejecutar los retos
-
-Ejecuta el archivo directamente desde consola:
-
-```python
-python challenges.py
-```
-
-O importa las funciones desde otro script para probarlas de forma independiente:
-
-```python
-from challenges import fizz_buzz, is_anagram, fibonacci, print_primes_between, reverse
-
-fizz_buzz()
-print(is_anagram("Amor", "Roma"))
-fibonacci()
-print_primes_between(1, 101)
-print(reverse("Hola mundo"))
-```
-
----
-
-### Objetivo
-
-Estos ejercicios están diseñados para reforzar la **lógica de programación**,  
-la **comprensión de estructuras de control** y el **uso de funciones** en Python.
-
-> Practica, modifica y extiende estos retos.  
-> Puedes proponer nuevas versiones más complejas (por ejemplo, añadir entrada del usuario, usar listas o expresiones lambda).
 
 ---
 

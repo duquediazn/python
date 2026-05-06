@@ -1684,4 +1684,4 @@ Con estas prácticas llevarás tu API FastAPI del estado didáctico a un entorno
 
 ## 🔗 Navegación
 
-⬅️ [Lección anterior](./intermediate.md) | [Volver al índice principal](../README.md)
+⬅️ [Lección anterior](./intermediate.md) | [Volver al índice principal](../README.md) | [Siguiente lección ➡️](./backend_fastapi_2.md)

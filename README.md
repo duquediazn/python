@@ -10,7 +10,9 @@ Este repositorio recopila scripts y ejercicios prácticos que he ido desarrollan
 
 1. [Fundamentos de Python](./docs/basic.md)
 2. [Conceptos intermedios](./docs/intermediate.md)
-3. [Desarrollo Backend con FastAPI](./docs/backend_fastapi.md)
+3. [Desarrollo Backend con FastAPI - Introducción](./docs/backend_fastapi.md)
+4. [Desarrollo Backend con FastAPI - Asincronía y Patrones Avanzados](./docs/backend_fastapi_2.md)
+5. [Testing Backend con pytest y FastAPI](./docs/backend_unit_testing.md)
 
 ---
 
@@ -23,13 +25,6 @@ Este repositorio recopila scripts y ejercicios prácticos que he ido desarrollan
 python -m venv venv
 source venv/bin/activate # Linux/macOS
 venv\Scripts\activate # Windows
-```
-
-- Para ejecutar ejemplos de FastAPI:
-
-```bash
-pip install fastapi uvicorn
-uvicorn main:app --reload
 ```
 
 ---

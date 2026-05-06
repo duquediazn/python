@@ -64,24 +64,23 @@ El `requirements.txt` del proyecto refleja las capas habituales de un backend Fa
 
 ```
 # Framework y servidor
-fastapi==0.121.1
-uvicorn==0.34.0       # Servidor ASGI para desarrollo
-gunicorn==23.0.0      # Process manager para producción (lanza workers Uvicorn)
-anyio==4.7.0          # Motor de concurrencia subyacente
+fastapi
+uvicorn      # Servidor ASGI para desarrollo
+gunicorn     # Process manager para producción (lanza workers Uvicorn) 
 
 # Validación
-pydantic==2.12.4
-email-validator==2.2.0    # Extiende Pydantic para validar emails
-python-multipart==0.0.9   # Necesario para recibir formularios (OAuth2PasswordRequestForm)
+pydantic
+email-validator    # Extiende Pydantic para validar emails
+python-multipart   # Necesario para recibir formularios (OAuth2PasswordRequestForm)
 
 # Base de datos
-SQLAlchemy==2.0.44
-sqlmodel==0.0.27       # Capa sobre SQLAlchemy + Pydantic
-asyncpg==0.30.0        # Driver asíncrono para PostgreSQL
+SQLAlchemy
+sqlmodel      # Capa sobre SQLAlchemy + Pydantic
+asyncpg       # Driver asíncrono para PostgreSQL
 
 # Autenticación
-PyJWT==2.10.1
-bcrypt==4.2.1          # Hash de contraseñas
+PyJWT
+bcrypt       # Hash de contraseñas
 
 # Utilidades
 python-dotenv==1.2.1   # Carga variables de entorno desde .env

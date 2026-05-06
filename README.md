@@ -2,7 +2,7 @@
 
 Guía estructurada de introducción al lenguaje de programación Python.
 
-Este repositorio recopila scripts y ejercicios prácticos que he ido desarrollando mientras aprendía Python, desde los fundamentos del lenguaje hasta conceptos más avanzados e introducción al desarrollo backend con FastAPI.
+Este repositorio recopila scripts y ejercicios prácticos, desde los fundamentos del lenguaje hasta conceptos más avanzados: introducción al desarrollo backend con FastAPI y unit testing.
 
 ---
 

@@ -445,7 +445,7 @@ Si tu objetivo es entender bien SQLAlchemy en este proyecto, la mejor estrategia
 4. Cómo ordeno/pagino: `.order_by(...).limit(...).offset(...)`
 5. Qué forma tiene el resultado: `scalars().first()`, `scalars().all()`, `all()`, contadores
 
-Si dominas esa secuencia, ya puedes leer la mayoría de queries del repo sin problema. El salto a `databases` sería más un cambio de estilo de escritura que de conceptos de base de datos.
+Si dominas esa secuencia, ya puedes leer la mayoría de queries del repo sin problema. 
 
 #### Cuándo conviene usar SQLModel y cuándo bajar a SQLAlchemy
 
@@ -462,36 +462,6 @@ Si dominas esa secuencia, ya puedes leer la mayoría de queries del repo sin pro
 - estás trabajando con sesiones async y consultas más cercanas a SQLAlchemy 2.x.
 
 En este repo, ese punto intermedio ya existe: el modelado es principalmente SQLModel, pero no renuncia a capacidades de SQLAlchemy cuando hacen falta.
-
-#### Comparación con alternativas basadas en SQL más explícito
-
-Una alternativa habitual es usar una librería como `databases`, o incluso escribir SQL más explícito con menos capa ORM.
-
-**Ventajas de SQLModel + SQLAlchemy:**
-- modelos tipados y coherentes con FastAPI;
-- menos boilerplate al definir entidades;
-- restricciones y columnas avanzadas disponibles cuando hacen falta;
-- transición razonable hacia async con la infraestructura de SQLAlchemy.
-
-**Ventajas de SQL textual o herramientas como `databases`:**
-- control muy directo sobre la consulta;
-- menor abstracción conceptual en consultas complejas;
-- a veces más claridad cuando el equipo prefiere pensar en SQL puro.
-
-**Costes de ir a SQL textual puro:**
-- más trabajo manual para mapear resultados;
-- menos cohesión entre estructura de datos y acceso a base de datos;
-- más dispersión si conviven muchas consultas escritas a mano.
-
-#### Recomendación para este proyecto
-
-Para Tabulae, la estrategia más coherente es:
-
-1. Mantener `SQLModel` como capa principal de modelos.
-2. Seguir usando `SQLAlchemy` puntualmente para constraints, tipos y control fino.
-3. No reescribir el proyecto hacia SQL textual puro salvo que exista una necesidad clara de rendimiento o de control muy específico.
-
-Con esa combinación se obtiene un equilibrio bueno entre productividad, legibilidad y capacidad de extensión.
 
 ---
 

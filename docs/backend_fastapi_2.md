@@ -597,9 +597,6 @@ Casos donde `async` suele no mejorar (o puede empeorar):
 4. **Endpoints simples en sistemas de baja carga**
     - Si la aplicación tiene tráfico moderado y consultas rápidas, adoptar async en toda la superficie puede no compensar su complejidad operativa.
 
-Regla práctica para Tabulae:
-- Async aporta especialmente en rutas con mucha espera de I/O (consultas concurrentes, integraciones externas, WebSockets).
-- En operaciones de negocio CPU-heavy, prioriza paralelismo por proceso/worker antes que `await`.
 
 ### Manejo de excepciones y transacciones en async [🔝 Volver al inicio](#)
 
